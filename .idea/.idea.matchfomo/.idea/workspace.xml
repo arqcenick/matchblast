@@ -12,22 +12,29 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardInputBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17042F12-7C73-4F4F-BBA6-CE912BA37F00/01/1d2e151d/JsonUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardPersistenceBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Board.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Tile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BoardInputBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TileData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BoardPersistenceBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" />
       </list>
     </option>
   </component>
@@ -65,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586606357945</updated>
-      <workItem from="1586606362468" duration="5886000" />
+      <workItem from="1586606362468" duration="26874000" />
     </task>
     <servers />
   </component>
@@ -83,41 +90,13 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="670" y="210" key="RiderGenerateDialog" timestamp="1586612578435">
+    <state x="552" y="178" key="#Notifications" timestamp="1586616216388">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="670" y="210" key="RiderGenerateDialog/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586612578435" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs</url>
-          <line>74</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" initialLine="36">
-            <startOffsets>
-              <option value="2303" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2348" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs</url>
-          <line>19</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" initialLine="17">
-            <startOffsets>
-              <option value="350" />
-            </startOffsets>
-            <endOffsets>
-              <option value="369" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="552" y="178" key="#Notifications/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586616216388" />
+    <state x="670" y="210" key="RiderGenerateDialog" timestamp="1586630919098">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="670" y="210" key="RiderGenerateDialog/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586630919098" />
   </component>
 </project>

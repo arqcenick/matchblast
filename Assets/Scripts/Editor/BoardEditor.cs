@@ -5,12 +5,12 @@ using Game.Behaviours;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(BoardBehaviour))]
+[CustomEditor(typeof(BoardPersistenceBehaviour))]
 public class BoardEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        BoardBehaviour b = target as BoardBehaviour;
+        BoardPersistenceBehaviour b = target as BoardPersistenceBehaviour;
         
         if (GUILayout.Button("Generate Random Level"))
         {
@@ -27,5 +27,11 @@ public class BoardEditor : Editor
             b.LoadBoard();
         }
         
+        if (GUILayout.Button("Clear Level"))
+        {
+            b.ClearBoard();
+        }
+        DrawDefaultInspector();
+
     }
 }
