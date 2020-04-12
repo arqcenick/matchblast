@@ -13,10 +13,8 @@ namespace Game.Behaviours
         public void CreateRandomBoard()
         {
 
-            if (_board.Tiles != null)
-            {
-                ClearBoard();
-            }
+            ClearBoard();
+
             _board.Tiles = new TileBehaviour[_board.Settings.Width,_board.Settings.Height];
             for (int i = 0; i < _board.Settings.Width; i++)
             {
@@ -57,7 +55,8 @@ namespace Game.Behaviours
                 for (int j = 0; j < _board.Settings.Height; j++)
                 {
                     var tile = _board.Settings.GetTileDataAt(i, j);
-                    _board.Tiles[i, j] = Instantiate(PrefabAccessor.Instance.Prefabs[tile.PrefabIndex], _board.GetWorldPosition(tile.Coordinate.x, tile.Coordinate.y), Quaternion.identity, transform);
+                    _board.Tiles[i, j] = Instantiate(PrefabAccessor.Instance.Prefabs[0], _board.GetWorldPosition(tile.Coordinate.x, tile.Coordinate.y), Quaternion.identity, transform);
+                    _board.Tiles[i, j].ColorIndex = tile.PrefabIndex;
                     _board.Tiles[i, j].SetCoordinate(new Vector2Int(i,j));
                 }
             }
@@ -83,11 +82,15 @@ namespace Game.Behaviours
         
         private void AcquireBoard()
         {
+            Debug.Log(_board.Settings.Height);
+
             _board.Tiles = new TileBehaviour[_board.Settings.Width,_board.Settings.Height];
             for (int i = 0; i < transform.childCount; i++)
             {
                 int x = i / _board.Settings.Height;
                 int y = i % _board.Settings.Height;
+                Debug.Log(x);
+                Debug.Log(y);
                 _board.Tiles[x,y] = transform.GetChild(i).GetComponent<TileBehaviour>();
                 _board.Tiles[x,y].SetCoordinate(new Vector2Int(x,y));
             }

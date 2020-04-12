@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
+using Game.Behaviours;
+
+
 
 [ExecuteInEditMode]
 public class PrefabAccessor : MonoBehaviour
@@ -23,8 +26,14 @@ public class PrefabAccessor : MonoBehaviour
 
 
     public List<TileBehaviour> Prefabs => _prefabs;
+    public List<Sprite> PowerUpSprites => _powerUpSprites;
     
     [SerializeField]
+
+
     private List<TileBehaviour> _prefabs;
+    
+    [SerializeField]
+    private List<Sprite> _powerUpSprites;
 
 }

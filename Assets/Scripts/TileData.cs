@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.Behaviours;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.WSA;
@@ -18,7 +19,7 @@ namespace Game.Data
     {
         public Vector2Int Coordinate => _coordinate;
 
-        public int PrefabIndex => _prefabIndex;
+        public TileColor PrefabIndex => (TileColor) _prefabIndex;
         
         
         [SerializeField]
@@ -26,9 +27,9 @@ namespace Game.Data
         [FormerlySerializedAs("_position")] [SerializeField]
         private Vector2Int _coordinate;
         
-        public TileData(int prefabIndex, Vector2Int coordinate)
+        public TileData(TileColor prefabIndex, Vector2Int coordinate)
         {
-            _prefabIndex = prefabIndex;
+            _prefabIndex = (int) prefabIndex;
             _coordinate = coordinate;
         }
         

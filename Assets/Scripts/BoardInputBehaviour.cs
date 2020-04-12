@@ -40,28 +40,15 @@ namespace Game.Behaviours
 
         private void OnTileClicked(TileBehaviour tile)
         {
-           _board.DestroyTileAt(tile.Coordinate);
-
+            if (tile.PowerUp == PowerUpType.None)
+            {
+                _board.OnTileMatched(tile);
+            }
+            else
+            {
+                _board.OnTileActivated(tile);
+            }
         }
-
-
-        // private void Update()
-        // {
-        //     if (Input.GetInputDown())
-        //     {
-        //         PressOnBoard();
-        //     }
-        // }
-        //
-        // private void PressOnBoard()
-        // {
-        //     var position = Input.GetPointerPosition();
-        // }
-        //
-        // private Vector2Int ConvertPointerPositionToBoardPosition(Vector3 pos)
-        // {
-        //     Vector3 absolutePosition = pos - transform.position;
-        // }
     }
 }
 

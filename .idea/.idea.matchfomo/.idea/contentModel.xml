@@ -21,6 +21,7 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
+        <e p="ExplosionIndicatorBehaviour.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Board.cs" t="Include" />
           <e p="BoardBehaviour.cs" t="Include" />

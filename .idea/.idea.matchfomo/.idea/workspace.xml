@@ -13,6 +13,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ExplosionIndicatorBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -21,6 +22,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardPersistenceBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B53F6837-A461-4744-B595-BE69DA4CBB29/ab/4e82cb94/Transform.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -28,12 +30,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Tile.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BoardInputBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" />
+        <option value="$PROJECT_DIR$/Assets/ExplosionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/ExplosionIndicatorBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TileData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BoardPersistenceBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BoardInputBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" />
       </list>
     </option>
@@ -72,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586606357945</updated>
-      <workItem from="1586606362468" duration="26874000" />
+      <workItem from="1586606362468" duration="41978000" />
     </task>
     <servers />
   </component>
