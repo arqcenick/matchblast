@@ -11,15 +11,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/BoardSettingsEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Board.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ExplosionIndicatorBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardInputBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17042F12-7C73-4F4F-BBA6-CE912BA37F00/01/1d2e151d/JsonUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/LevelManagerUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/LoadingUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GoalCounterUIBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ExplosionIndicatorBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/GoalCounterElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BoardPersistenceBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B53F6837-A461-4744-B595-BE69DA4CBB29/ab/4e82cb94/Transform.cs" root0="SKIP_HIGHLIGHTING" />
@@ -29,16 +35,22 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Tile.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/ExplosionController.cs" />
         <option value="$PROJECT_DIR$/Assets/ExplosionIndicatorBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TileData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BoardPersistenceBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BoardInputBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TileBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PrefabAccessor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BoardPersistenceBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/BoardEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/BoardSettingsEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GoalCounterElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GoalCounterUIBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BoardInputBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/LevelManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/LevelManagerUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/LoadingUI.cs" />
       </list>
     </option>
   </component>
@@ -56,18 +68,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20204">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20204" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20204">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20204" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+    </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586606357945</updated>
-      <workItem from="1586606362468" duration="41978000" />
+      <workItem from="1586606362468" duration="53558000" />
     </task>
     <servers />
   </component>
@@ -98,9 +114,94 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Notifications/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586616216388" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586716149761">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716149761" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1586716188811">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716188811" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1586716188810">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716188810" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1586716188809">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716188809" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1586716188811">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716188811" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1586716277004">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716277004" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1586716277004">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716277004" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1586716277003">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716277003" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1586716277004">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586716277004" />
     <state x="670" y="210" key="RiderGenerateDialog" timestamp="1586630919098">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="670" y="210" key="RiderGenerateDialog/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586630919098" />
+    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup" timestamp="1586718722943">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="173" width="672" height="676" key="search.everywhere.popup/0.0.1920.1040/-1920.3.1920.1040@0.0.1920.1040" timestamp="1586718722943" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs</url>
+          <line>160</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" initialLine="154">
+            <startOffsets>
+              <option value="5247" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5279" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs</url>
+          <line>154</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BoardBehaviour.cs" initialLine="153">
+            <startOffsets>
+              <option value="5019" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5034" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs</url>
+          <line>65</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BoardSettings.cs" initialLine="64">
+            <startOffsets>
+              <option value="1429" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1434" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

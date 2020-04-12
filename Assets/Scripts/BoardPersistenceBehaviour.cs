@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Game.Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -89,8 +90,6 @@ namespace Game.Behaviours
             {
                 int x = i / _board.Settings.Height;
                 int y = i % _board.Settings.Height;
-                Debug.Log(x);
-                Debug.Log(y);
                 _board.Tiles[x,y] = transform.GetChild(i).GetComponent<TileBehaviour>();
                 _board.Tiles[x,y].SetCoordinate(new Vector2Int(x,y));
             }

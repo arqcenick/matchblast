@@ -31,6 +31,9 @@ public class BoardEditor : Editor
         {
             b.ClearBoard();
         }
+
+        
+
         DrawDefaultInspector();
 
     }

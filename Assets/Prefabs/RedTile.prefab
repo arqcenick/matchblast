@@ -82,7 +82,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &3742969269566328018
 MonoBehaviour:
@@ -98,6 +98,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colorIndex: 4
   _size: {x: 0.5, y: 0.5}
+  _explosionIndicator: {fileID: 0}
+  _tileSprites: []
+  _spriteRenderer: {fileID: 0}
 --- !u!61 &-1986043104875441068
 BoxCollider2D:
   m_ObjectHideFlags: 0

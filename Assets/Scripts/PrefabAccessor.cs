@@ -28,12 +28,13 @@ public class PrefabAccessor : MonoBehaviour
     public List<TileBehaviour> Prefabs => _prefabs;
     public List<Sprite> PowerUpSprites => _powerUpSprites;
     
+    public List<Sprite> TileSprites => _tileSprites;
+
     [SerializeField]
-
-
     private List<TileBehaviour> _prefabs;
     
     [SerializeField]
     private List<Sprite> _powerUpSprites;
-
+    [SerializeField]
+    private List<Sprite> _tileSprites;
 }

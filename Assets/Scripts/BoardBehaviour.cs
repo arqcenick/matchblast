@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.WSA;
@@ -12,6 +13,10 @@ namespace Game.Behaviours
     {
 
         public Action<TileBehaviour> onTileCreated;
+
+        public Action<TileBehaviour> onTileDestroyed;
+
+        public Action<Dictionary<TileColor, int>> onLevelStarted;
         public TileBehaviour[,] Tiles
         {
             get => _tiles;
@@ -26,11 +31,14 @@ namespace Game.Behaviours
         private TileBehaviour[,] _tiles;
 
         private bool[] _columnUpdateFlags;
+
+        private Dictionary<TileColor, int> _gameObjectives;
         
         private void DestroyTileAt(Vector2Int coordinate)
         {
             _tiles[coordinate.x, coordinate.y].DestroyTile();
             UpdateColumn(coordinate.x);
+            onTileDestroyed(_tiles[coordinate.x, coordinate.y]);
         }
         
         public TileBehaviour GetRandomTile(int x, int y)
@@ -51,7 +59,7 @@ namespace Game.Behaviours
             var neighbors = GetNeighbours(originTile.Coordinate);
             foreach (var neighbor in neighbors)
             {
-                if (neighbor.ColorIndex == originTile.ColorIndex && originTile.ColorIndex != TileColor.None)
+                if (neighbor.ColorIndex == originTile.ColorIndex && originTile.ColorIndex != TileColor.None && neighbor.Coordinate != originTile.Coordinate)
                 {
                     return true;
                 }
@@ -59,30 +67,36 @@ namespace Game.Behaviours
             return false;
         }
 
-        public IEnumerable<TileBehaviour> GetNeighbours(Vector2Int tilePosition, int order=1)
+        public List<TileBehaviour> GetNeighbours(Vector2Int tilePosition, int order=1)
         {
+            if (order == 0)
+            {
+                return new List<TileBehaviour> {_tiles[tilePosition.x, tilePosition.y]};
+            }
+            
             List<TileBehaviour> result = new List<TileBehaviour>();
+            result.Add(_tiles[tilePosition.x, tilePosition.y]);
             if (tilePosition.x < _settings.Width - 1)
             {
                 var targetTile = _tiles[tilePosition.x + 1, tilePosition.y];
-                result.Add(targetTile);
+                result.AddRange(GetNeighbours(targetTile.Coordinate, order-1));
             }
             if (tilePosition.x > 0)
             {
                 var targetTile = _tiles[tilePosition.x - 1, tilePosition.y];
-                result.Add(targetTile);
+                result.AddRange(GetNeighbours(targetTile.Coordinate, order-1));
 
             }
             if (tilePosition.y < _settings.Height - 1)
             {
                 var targetTile = _tiles[tilePosition.x, tilePosition.y + 1];
-                result.Add(targetTile);
+                result.AddRange(GetNeighbours(targetTile.Coordinate, order-1));
 
             }
             if (tilePosition.y > 0)
             {
                 var targetTile = _tiles[tilePosition.x, tilePosition.y -1];
-                result.Add(targetTile);
+                result.AddRange(GetNeighbours(targetTile.Coordinate, order-1));
             }
 
             return result;
@@ -139,14 +153,37 @@ namespace Game.Behaviours
         private void Start()
         {
             CheckMatches();
+            _gameObjectives = new Dictionary<TileColor, int>();
+            foreach (var kv in _settings.Objectives)
+            {
+                _gameObjectives.Add(kv.Key, kv.Value);
+            }
+            onLevelStarted(_gameObjectives);
+        }
+
+        private void CheckWinCondition()
+        {
+            bool allObjectivesReached = true;
+            foreach (var kv in _gameObjectives)
+            {
+                allObjectivesReached &= kv.Value == 0;
+            }
+
+            if (allObjectivesReached)
+            {
+                
+            }
+
         }
 
         private void Update()
         {
+            bool shouldCheckWinCondition = false;
             for (int i = 0; i < _columnUpdateFlags.Length; i++)
             {
                 if (_columnUpdateFlags[i])
                 {
+                    shouldCheckWinCondition = true;
                     int counter = 0;
                     for (int j = 0; j < _settings.Height; j++)
                     {
@@ -172,6 +209,11 @@ namespace Game.Behaviours
                     CheckMatches();
                 }
                 
+            }
+
+            if (shouldCheckWinCondition)
+            {
+                CheckWinCondition();
             }
             
         }
@@ -292,7 +334,7 @@ namespace Game.Behaviours
                         break;
                     case PowerUpType.Dynamite:
                         DestroyTileAt(tile.Coordinate);
-                        neigbours = GetNeighbours(tile.Coordinate);
+                        neigbours = GetNeighbours(tile.Coordinate,2);
                         foreach (var neigbour in neigbours)
                         {
                             if (neigbour.PowerUp == PowerUpType.None)
@@ -308,7 +350,7 @@ namespace Game.Behaviours
                         break;
                     case PowerUpType.TNT:
                         DestroyTileAt(tile.Coordinate);
-                        neigbours = GetNeighbours(tile.Coordinate);
+                        neigbours = GetNeighbours(tile.Coordinate,3);
                         foreach (var neigbour in neigbours)
                         {
                             if (neigbour.PowerUp == PowerUpType.None)

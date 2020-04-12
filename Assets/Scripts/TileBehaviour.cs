@@ -50,7 +50,7 @@ namespace Game.Behaviours
             set
             {
                 _colorIndex = value;
-                _spriteRenderer.sprite = _tileSprites[(int) _colorIndex];
+                _spriteRenderer.sprite = PrefabAccessor.Instance.TileSprites[(int) _colorIndex];
 
             }
         }
@@ -83,8 +83,6 @@ namespace Game.Behaviours
         [SerializeField]
         private ExplosionIndicatorBehaviour _explosionIndicator;
         
-        [SerializeField]
-        private List<Sprite> _tileSprites;
 
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
