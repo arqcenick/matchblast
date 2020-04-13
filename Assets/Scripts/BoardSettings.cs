@@ -17,6 +17,8 @@ public class BoardSettings : ScriptableObject
 {
     public Dictionary<TileColor, int> Objectives => _objectives;
 
+    public int TotalMoves => _totalMoves;
+
     public int Height => _height;
 
     public int Width => _width;
@@ -43,13 +45,35 @@ public class BoardSettings : ScriptableObject
     
     [SerializeField]
     private Dictionary<TileColor, int> _objectives;
-    
+
+    [SerializeField]
+    private List<int> _starObjectives;
+
+    [SerializeField]
+    private int _totalMoves;
 
     public TileData GetTileDataAt(int x, int y)
     {
         return _tileBehaviours.Tiles[x * _height + y];
     }
 
+    public void SaveSettings()
+    {
+        _data = new BoardSettingsData();
+        _data.Width = _width;
+        _data.Height = _height;
+        _data.LevelName = _levelName;
+        _data.ObjectiveDict = new TileObjectiveDict();
+        _data.ObjectiveDict.SetDictionary(_objectives);
+        _data.Tiles = _tileBehaviours;
+        _data.Size = _size;
+        _data.TotalMoves = _totalMoves;
+        string path = "Assets/Resources/Levels/" + _levelName + ".asset";
+
+        TextAsset asset = new TextAsset(JsonUtility.ToJson(_data));
+        AssetDatabase.CreateAsset(asset, path);
+    }
+    
     public void SaveSettings(TileData[,] tiles)
     {
         _tileBehaviours.Tiles.Clear();
@@ -59,39 +83,27 @@ public class BoardSettings : ScriptableObject
             _tileBehaviours.Tiles.Add(tile);
         }
         
-        _data = new BoardSettingsData();
-        _data.Width = _width;
-        _data.Height = _height;
-        _data.LevelName = _levelName;
-        _data.ObjectiveDict = new TileObjectiveDict();
-        _data.ObjectiveDict.SetDictionary(_objectives);
-        _data.Tiles = _tileBehaviours;
-        _data.Size = _size;
-        string path = "Assets/Resources/Levels/" + _levelName + ".asset";
-
-        TextAsset asset = new TextAsset(JsonUtility.ToJson(_data));
-        AssetDatabase.CreateAsset(asset, path);
-        Debug.Log(_size);
-
+        SaveSettings();
     }
 
     public void LoadSettings()
     {
-        string path = "Levels/" + _levelName;
-        var saveFile = Resources.Load <TextAsset>(path);
-        Debug.Log(saveFile.text);
-        var settingsData = JsonUtility.FromJson<BoardSettingsData>(saveFile.text);
-        _tileBehaviours = settingsData.Tiles;
-        _width = settingsData.Width;
-        _height = settingsData.Height;
-        _levelName = settingsData.LevelName;
-        _size = settingsData.Size;
-        _objectives = settingsData.ObjectiveDict.AsDictionary();
+
         
-        Debug.Log(_tileBehaviours.Tiles.Count);
         try
         {
 
+            string path = "Levels/" + _levelName;
+            var saveFile = Resources.Load <TextAsset>(path);
+            Debug.Log(saveFile.text);
+            var settingsData = JsonUtility.FromJson<BoardSettingsData>(saveFile.text);
+            _tileBehaviours = settingsData.Tiles;
+            _width = settingsData.Width;
+            _height = settingsData.Height;
+            _levelName = settingsData.LevelName;
+            _size = settingsData.Size;
+            _totalMoves = settingsData.TotalMoves;
+            _objectives = settingsData.ObjectiveDict.AsDictionary();
             
         }
         catch
@@ -110,6 +122,14 @@ public class BoardSettings : ScriptableObject
         public TileDataList Tiles;
         public Vector2 Size;
         public TileObjectiveDict ObjectiveDict;
+        public int TotalMoves;
+        public StarObjectives StarObjectives;
+    }
+
+    [Serializable]
+    public class StarObjectives
+    {
+        public List<int> MinCounts;
     }
     
     [Serializable]
@@ -140,4 +160,5 @@ public class BoardSettings : ScriptableObject
     {
         _objectives = objectives;
     }
+    
 }

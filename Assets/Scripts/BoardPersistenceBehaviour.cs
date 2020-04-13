@@ -9,6 +9,8 @@ namespace Game.Behaviours
     [RequireComponent(typeof(BoardBehaviour))]
     public class BoardPersistenceBehaviour : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject Mask;
         private BoardBehaviour _board => GetComponent<BoardBehaviour>();
 
         public void CreateRandomBoard()
@@ -66,19 +68,12 @@ namespace Game.Behaviours
         
         public void ClearBoard()
         {
-            AcquireBoard();
-            Debug.Log(_board.Tiles.Length);
-            for (int i = 0; i < _board.Tiles.GetLength(0); i++)
+            while (transform.childCount>0)
             {
-                for (int j = 0; j < _board.Tiles.GetLength(1); j++)
-                {
-                    if (_board.Tiles[i, j] != null)
-                    {
-                        DestroyImmediate(_board.Tiles[i,j].gameObject);
-                    }
-                }
+                DestroyImmediate(transform.GetChild(0).gameObject);
             }
             _board.Tiles  = null;
+            Mask.transform.localScale = new Vector3(_board.Settings.Width * 0.5f + 0.1f, _board.Settings.Height * 0.5f + 0.1f, 1);
         }
         
         private void AcquireBoard()
@@ -98,6 +93,12 @@ namespace Game.Behaviours
         {
             ClearBoard();
             LoadBoard();
+            SetBoardFrame();
+        }
+
+        private void SetBoardFrame()
+        {
+            
         }
     }
 }

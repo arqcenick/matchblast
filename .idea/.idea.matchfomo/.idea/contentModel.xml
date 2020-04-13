@@ -38,9 +38,13 @@
           <e p="UI" t="Include">
             <e p="GoalCounterElement.cs" t="Include" />
             <e p="GoalCounterUIBehaviour.cs" t="Include" />
+            <e p="LevelEndUI.cs" t="Include" />
             <e p="LevelManager.cs" t="Include" />
             <e p="LevelManagerUI.cs" t="Include" />
             <e p="LoadingUI.cs" t="Include" />
+            <e p="MoveCounterUI.cs" t="Include" />
+            <e p="WinLevelUi.cs" t="Include" />
+            <e p="WinStarUI.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

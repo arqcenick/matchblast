@@ -12,11 +12,17 @@ namespace Game.Behaviours
     public class BoardBehaviour : MonoBehaviour
     {
 
+        //Events
         public Action<TileBehaviour> onTileCreated;
 
         public Action<TileBehaviour> onTileDestroyed;
 
-        public Action<Dictionary<TileColor, int>> onLevelStarted;
+        public Action<Dictionary<TileColor, int>, int> onLevelStarted;
+
+        public Action<int> onPlayerMoved;
+
+        public Action<int> onPlayerWin;
+        
         public TileBehaviour[,] Tiles
         {
             get => _tiles;
@@ -27,12 +33,16 @@ namespace Game.Behaviours
         
         [SerializeField]
         private BoardSettings _settings;
-
+        
         private TileBehaviour[,] _tiles;
 
         private bool[] _columnUpdateFlags;
 
         private Dictionary<TileColor, int> _gameObjectives;
+
+        private int _movesLeft;
+
+        private LevelManager _levelManager;
         
         private void DestroyTileAt(Vector2Int coordinate)
         {
@@ -137,20 +147,41 @@ namespace Game.Behaviours
 
         public Vector2 GetWorldPosition(int x, int y)
         {
-            return new Vector2(x * _settings.Size.x, y * _settings.Size.y) + (Vector2) transform.position;
+            return new Vector2(x * _settings.Size.x, (y - _settings.Height * 0.5f) * _settings.Size.y + 0.5f)
+                   - (Vector2.right * (_settings.Width - 1) * 0.25f)
+                   + Vector2.up * transform.position.y;
         }
         
         private void Awake()
         {
             _columnUpdateFlags = new bool[_settings.Width];
+            _levelManager = FindObjectOfType<LevelManager>();
+            if (_levelManager != null)
+            {
+                _levelManager.onLevelReady += StartLevel;
+            }
+
+
         }
 
         private void UpdateColumn(int columnIndex)
         {
             _columnUpdateFlags[columnIndex] = true;
         }
+        
+        
 
         private void Start()
+        {
+            if(_levelManager == null)
+            {
+                
+                StartLevel(); 
+                Debug.Log("Starting level");
+            }
+        }
+
+        public void StartLevel()
         {
             CheckMatches();
             _gameObjectives = new Dictionary<TileColor, int>();
@@ -158,11 +189,17 @@ namespace Game.Behaviours
             {
                 _gameObjectives.Add(kv.Key, kv.Value);
             }
-            onLevelStarted(_gameObjectives);
+
+            _movesLeft = _settings.TotalMoves;
+            onLevelStarted(_gameObjectives, _movesLeft);
+            
         }
 
-        private void CheckWinCondition()
+        private void CheckWinLoseCondition()
         {
+            _movesLeft = Mathf.Max(0, _movesLeft - 1);
+            onPlayerMoved(_movesLeft);
+            onPlayerWin(3);
             bool allObjectivesReached = true;
             foreach (var kv in _gameObjectives)
             {
@@ -173,7 +210,10 @@ namespace Game.Behaviours
             {
                 
             }
-
+            else if(_movesLeft == 0)
+            {
+                   
+            }
         }
 
         private void Update()
@@ -213,7 +253,7 @@ namespace Game.Behaviours
 
             if (shouldCheckWinCondition)
             {
-                CheckWinCondition();
+                CheckWinLoseCondition();
             }
             
         }
@@ -273,7 +313,6 @@ namespace Game.Behaviours
         
         private void CheckMatchesRecursively(List<Vector2Int> matchGroup, TileBehaviour tile)
         {
-
             matchGroup.Add(tile.Coordinate);
             tile.MatchType = MatchType.Undetermined;
             var neighbours = GetNeighbours(tile.Coordinate);
@@ -287,18 +326,7 @@ namespace Game.Behaviours
 
 
         }
-
-        private void StartUpdateColumn(int columnIndex)
-        {
-            for (int i = 0; i < _settings.Height; i++)
-            {
-                var tile = _tiles[columnIndex, i];
-                if (tile.Destroyed)
-                {
-                    
-                }
-            }
-        }
+        
 
 
         public void OnTileMatched(TileBehaviour tile)
@@ -313,6 +341,7 @@ namespace Game.Behaviours
         {
             if (tile.PowerUp != PowerUpType.None)
             {
+                
                 var powerUp = tile.PowerUp;
                 tile.ClearPowerUp();
                 switch (powerUp)

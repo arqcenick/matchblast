@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Game.Behaviours;
 using UnityEditor;
@@ -15,7 +16,8 @@ namespace Game.Data
             BoardSettings b = (BoardSettings) target;
             if (b.Objectives == null)
             {
-                b.SetObjectives(new Dictionary<TileColor, int>());
+                b.LoadSettings();
+                //b.SetObjectives(new Dictionary<TileColor, int>());
             }
             for (int i = 0; i < 5; i++)
             {
@@ -33,6 +35,12 @@ namespace Game.Data
             
             b.SetObjectives(b.Objectives);
             DrawDefaultInspector();
+        }
+
+        private void OnValidate()
+        {
+            BoardSettings b = (BoardSettings) target;
+            b.SaveSettings();
         }
     }
 

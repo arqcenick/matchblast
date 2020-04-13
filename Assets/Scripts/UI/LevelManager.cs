@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,10 @@ namespace Game.Behaviours
     
     public class LevelManager : MonoBehaviour
     {
+
+        public Action onLevelStart;
+        public Action onLevelReady;
+        
         [SerializeField]
         private List<Scene> _levels;
 
@@ -24,11 +29,28 @@ namespace Game.Behaviours
 
         public void StartLevel()
         {
+            onLevelStart();
+            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1);});
+        }
+
+        public void NextLevel()
+        {
+            onLevelStart();
             
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.buildIndex == 1)
+            {
+                onLevelReady();
+            }
         }
 
         private void Awake()
         {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            DontDestroyOnLoad(gameObject);
             _requiredSpan = TimeSpan.FromSeconds(_healthRegenIntervalSeconds);
             try
             {
@@ -59,8 +81,8 @@ namespace Game.Behaviours
             {
                 _lastDate = DateTime.Now;
             }
-
         }
+        
 
         private void Update()
         {
@@ -70,13 +92,12 @@ namespace Game.Behaviours
             {
                 AddHealth(healthRegen);
                 _lastDate = DateTime.Now;
-
             }
-
         }
 
         private void AddHealth(int health)
         {
+            //Play health gain animation
             _currentHealth = Math.Min(5, _currentHealth + health);
         }
 

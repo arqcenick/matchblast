@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Game.Behaviours;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 namespace Game.Behaviours
@@ -40,14 +41,18 @@ namespace Game.Behaviours
 
         private void OnTileClicked(TileBehaviour tile)
         {
-            if (tile.PowerUp == PowerUpType.None)
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                _board.OnTileMatched(tile);
+                if (tile.PowerUp == PowerUpType.None)
+                {
+                    _board.OnTileMatched(tile);
+                }
+                else
+                {
+                    _board.OnTileActivated(tile);
+                }
             }
-            else
-            {
-                _board.OnTileActivated(tile);
-            }
+
         }
     }
 }

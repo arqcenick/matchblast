@@ -15,7 +15,7 @@ namespace Game.UI
 
         private Dictionary<TileColor, int> _objectives;
         
-        public void SetObjectives(Dictionary<TileColor, int> objectives)
+        public void SetObjectives(Dictionary<TileColor, int> objectives, int moveCount)
         {
             _objectives = objectives;
             foreach (var kv in _objectives)
