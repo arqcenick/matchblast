@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Game.Data;
@@ -21,6 +20,7 @@ namespace Game.Behaviours
             _player = player;
             _initialized = true;
         }
+
         public static int GetPlayerHealth()
         {
             Debug.Assert(_initialized);
@@ -40,27 +40,36 @@ namespace Game.Behaviours
 
         void SetHealth(int health);
     }
-    
+
     public class LevelManager : MonoBehaviour, IPlayer
     {
-        
-        [SerializeField]
-        private List<BoardSettings> _levels;
+        private DateTime _currentDate;
+        private int _currentHealth;
 
         private int _currentLevel;
-        private int _currentHealth;
         private int _currentStars;
 
-        private DateTime _currentDate;
+        [SerializeField] private int _healthRegenIntervalSeconds = 3600;
         private DateTime _lastDate;
 
-        [SerializeField] private int _healthRegenIntervalSeconds = 3600;
+        [SerializeField] private List<BoardSettings> _levels;
+
         private TimeSpan _requiredSpan;
+
+        public int GetHealth()
+        {
+            return _currentHealth;
+        }
+
+        public void SetHealth(int health)
+        {
+            _currentHealth = health;
+        }
 
         public void StartLevel()
         {
             UIEvent<WillSceneChangeEvent>.Instance.Invoke();
-            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1);});
+            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1); });
         }
 
         public void NextLevel()
@@ -77,12 +86,11 @@ namespace Game.Behaviours
         public void MainMenu()
         {
             UIEvent<WillSceneChangeEvent>.Instance.Invoke();
-            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(0);});
+            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(0); });
         }
-        
+
         private void Awake()
         {
-
             PlayerServices.Initialize(this);
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.sceneUnloaded += OnSceneUnloaded;
@@ -90,60 +98,56 @@ namespace Game.Behaviours
             UIEvent<RetryLevelEvent>.Instance.AddListener(RestartLevel);
             UIEvent<MainMenuEvent>.Instance.AddListener(MainMenu);
 
-            
-            
+
             DontDestroyOnLoad(gameObject);
             _requiredSpan = TimeSpan.FromSeconds(_healthRegenIntervalSeconds);
- 
+
             _currentLevel = PlayerPrefs.GetInt("Level");
             _currentStars = PlayerPrefs.GetInt("Stars");
-            _currentHealth =  PlayerPrefs.GetInt("Health");
-            int initialized = PlayerPrefs.GetInt("init");
+            _currentHealth = PlayerPrefs.GetInt("Health");
+            var initialized = PlayerPrefs.GetInt("init");
 
             if (initialized == 0)
             {
                 _currentLevel = 0;
                 _currentStars = 0;
                 _currentHealth = 5;
-            
+
                 PlayerPrefs.SetInt("Level", _currentLevel);
                 PlayerPrefs.SetInt("Stars", _currentStars);
                 PlayerPrefs.SetInt("Health", _currentHealth);
                 PlayerPrefs.SetInt("init", 1);
                 PlayerPrefs.Save();
             }
-
-            
-     
         }
-        
+
         private void Start()
         {
             _currentDate = DateTime.Now;
             try
             {
-                long oldDate = Convert.ToInt64(PlayerPrefs.GetString("date_time"));
+                var oldDate = Convert.ToInt64(PlayerPrefs.GetString("date_time"));
                 _lastDate = DateTime.FromBinary(oldDate);
             }
             catch (Exception e)
             {
                 _lastDate = DateTime.Now;
             }
-            UIEvent<SceneReadyEvent>.Instance.Invoke();
 
+            UIEvent<SceneReadyEvent>.Instance.Invoke();
         }
-        
+
         private void Update()
         {
-            TimeSpan span = DateTime.Now - _lastDate;
-            int healthRegen = (int) Math.Floor(span.TotalMilliseconds / _requiredSpan.TotalMilliseconds);
+            var span = DateTime.Now - _lastDate;
+            var healthRegen = (int) Math.Floor(span.TotalMilliseconds / _requiredSpan.TotalMilliseconds);
             if (healthRegen >= 1)
             {
                 AddHealth(healthRegen);
                 _lastDate = DateTime.Now;
             }
         }
-        
+
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             if (scene.buildIndex == 1)
@@ -152,10 +156,10 @@ namespace Game.Behaviours
                 FindObjectOfType<BoardBehaviour>().onPlayerWin += OnPlayerWin;
                 FindObjectOfType<BoardBehaviour>().onPlayerLose += OnPlayerLose;
             }
-            
+
             UIEvent<SceneReadyEvent>.Instance.Invoke();
         }
-        
+
         private void OnSceneUnloaded(Scene scene)
         {
             PlayerPrefs.SetInt("Level", _currentLevel);
@@ -168,12 +172,11 @@ namespace Game.Behaviours
             //     FindObjectOfType<BoardBehaviour>().onPlayerLose -= OnPlayerLose;
             // }
         }
-        
+
         private void OnPlayerWin(int stars)
         {
             _currentStars += stars;
             _currentLevel++;
-            
         }
 
         private void OnPlayerLose()
@@ -188,27 +191,12 @@ namespace Game.Behaviours
             PlayerPrefs.SetInt("Stars", _currentStars);
             PlayerPrefs.SetInt("Health", _currentHealth);
             PlayerPrefs.SetInt("init", 1);
-
         }
-        
+
         private void AddHealth(int health)
         {
             //Play health gain animation
             SetHealth(Math.Min(5, _currentHealth + health));
         }
-
-        public int GetHealth()
-        {
-            return _currentHealth;
-        }
-
-        public void SetHealth(int health)
-        {
-            _currentHealth = health;
-        }
     }
-    
-    
-
 }
-

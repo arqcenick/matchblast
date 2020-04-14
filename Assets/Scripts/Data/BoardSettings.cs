@@ -1,21 +1,33 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Game.Behaviours;
-using Game.Data;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.WSA;
-using Application = UnityEngine.Application;
-
 
 namespace Game.Data
 {
     [CreateAssetMenu(fileName = "LevelData", menuName = "LevelData", order = 1)]
     public class BoardSettings : ScriptableObject
     {
+        private BoardSettingsData _data;
+
+        [SerializeField] private int _height;
+
+        [SerializeField] private string _levelName;
+
+        [SerializeField] private Dictionary<TileColor, int> _objectives;
+
+        [SerializeField] private Vector2 _size;
+
+        [SerializeField] private List<int> _starObjectives;
+
+
+        [SerializeField] private TileDataList _tileBehaviours;
+
+        [SerializeField] private int _totalMoves;
+
+        [SerializeField] private int _width;
         public List<int> StarObjectiveList => _starObjectives;
 
         public Dictionary<TileColor, int> Objectives => _objectives;
@@ -27,25 +39,6 @@ namespace Game.Data
         public int Width => _width;
 
         public Vector2 Size => _size;
-
-        [SerializeField] private Vector2 _size;
-
-        [SerializeField] private int _width;
-
-        [SerializeField] private int _height;
-
-
-        [SerializeField] private TileDataList _tileBehaviours;
-
-        [SerializeField] private string _levelName;
-
-        private BoardSettingsData _data;
-
-        [SerializeField] private Dictionary<TileColor, int> _objectives;
-
-        [SerializeField] private List<int> _starObjectives;
-
-        [SerializeField] private int _totalMoves;
 
         public TileData GetTileDataAt(int x, int y)
         {
@@ -60,20 +53,20 @@ namespace Game.Data
             _data.Tiles = _tileBehaviours;
             _data.Size = _size;
             _data.TotalMoves = _totalMoves;
-            string path = "Assets/Resources/Levels/" + _levelName + ".asset";
+            var path = "Assets/Resources/Levels/" + _levelName + ".asset";
 
-            TextAsset asset = new TextAsset(JsonUtility.ToJson(_data));
+#if UNITY_EDITOR
+            var asset = new TextAsset(JsonUtility.ToJson(_data));
             AssetDatabase.CreateAsset(asset, path);
+#endif
+
         }
 
         public void SaveSettings(TileData[,] tiles)
         {
             _tileBehaviours.Tiles.Clear();
 
-            foreach (var tile in tiles)
-            {
-                _tileBehaviours.Tiles.Add(tile);
-            }
+            foreach (var tile in tiles) _tileBehaviours.Tiles.Add(tile);
 
             _data = new BoardSettingsData();
             _data.Width = _width;
@@ -85,7 +78,7 @@ namespace Game.Data
         {
             try
             {
-                string path = "Levels/" + _levelName;
+                var path = "Levels/" + _levelName;
                 var saveFile = Resources.Load<TextAsset>(path);
                 var settingsData = JsonUtility.FromJson<BoardSettingsData>(saveFile.text);
                 _tileBehaviours = settingsData.Tiles;
@@ -102,17 +95,22 @@ namespace Game.Data
             }
         }
 
+        public void SetObjectives(Dictionary<TileColor, int> objectives)
+        {
+            _objectives = objectives;
+        }
+
         [Serializable]
         public class BoardSettingsData
         {
-            public int Width;
             public int Height;
             public string LevelName;
-            public TileDataList Tiles;
-            public Vector2 Size;
             public TileObjectiveDict ObjectiveDict;
-            public int TotalMoves;
+            public Vector2 Size;
             public StarObjectives StarObjectives;
+            public TileDataList Tiles;
+            public int TotalMoves;
+            public int Width;
         }
 
         [Serializable]
@@ -124,6 +122,9 @@ namespace Game.Data
         [Serializable]
         public class TileObjectiveDict
         {
+            public List<TileColor> Colors;
+            public List<int> Counts;
+
             public void SetDictionary(Dictionary<TileColor, int> objectives)
             {
                 Colors = objectives.Keys.ToList();
@@ -132,22 +133,11 @@ namespace Game.Data
 
             public Dictionary<TileColor, int> AsDictionary()
             {
-                Dictionary<TileColor, int> result = new Dictionary<TileColor, int>();
-                for (int i = 0; i < Colors.Count; i++)
-                {
-                    result.Add(Colors[i], Counts[i]);
-                }
+                var result = new Dictionary<TileColor, int>();
+                for (var i = 0; i < Colors.Count; i++) result.Add(Colors[i], Counts[i]);
 
                 return result;
             }
-
-            public List<TileColor> Colors;
-            public List<int> Counts;
-        }
-
-        public void SetObjectives(Dictionary<TileColor, int> objectives)
-        {
-            _objectives = objectives;
         }
     }
 }

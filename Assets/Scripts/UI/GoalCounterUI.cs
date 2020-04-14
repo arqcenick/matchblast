@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Game.Behaviours;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.UI
 {
     public class GoalCounterUI : MonoBehaviour
     {
+        private BoardBehaviour _board;
 
-        [SerializeField]
-        private List<GoalCounterElementUI> _goalCounters;
+        [SerializeField] private List<GoalCounterElementUI> _goalCounters;
 
         private Dictionary<TileColor, int> _objectives;
-        
+
         public void SetObjectives(Dictionary<TileColor, int> objectives, int moveCount)
         {
             _objectives = objectives;
@@ -23,8 +20,7 @@ namespace Game.UI
                 SetObjective(kv.Key, kv.Value);
             }
         }
-        
-        private BoardBehaviour _board;
+
         private void SetObjective(TileColor color, int count)
         {
             if (count != 0)
@@ -34,7 +30,6 @@ namespace Game.UI
                 element.SetTileColor(color);
                 element.SetTileCount(count);
             }
-
         }
 
         private void ProcessTileDestroy(TileBehaviour tile)
@@ -48,18 +43,13 @@ namespace Game.UI
                     _goalCounters[(int) tile.ColorIndex].gameObject.SetActive(false);
                 }
             }
-
         }
-        
+
         private void Awake()
         {
             _board = FindObjectOfType<BoardBehaviour>();
             _board.onTileDestroyed += ProcessTileDestroy;
             _board.onLevelStarted += SetObjectives;
         }
-        
-        
     }
 }
-
-

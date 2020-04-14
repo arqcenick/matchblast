@@ -8,14 +8,11 @@ namespace Game.UI
 {
     public class LoseLevelUI : MonoBehaviour
     {
-
-        [SerializeField]
-        private List<LoseHeartUI> _hearts;
-
         private int _currentHealthCount;
 
-        [SerializeField]
-        private float _heartAnimationTime;
+        [SerializeField] private float _heartAnimationTime;
+
+        [SerializeField] private List<LoseHeartUI> _hearts;
 
         public void OnRetryLevel()
         {
@@ -26,24 +23,24 @@ namespace Game.UI
         {
             UIEvent<MainMenuEvent>.Instance.Invoke();
         }
-        
+
         public void SetHealthVisibilities()
         {
-            for (int i = 0; i < 5; i++)
+            for (var i = 0; i < 5; i++)
             {
                 _hearts[i].SetVisible(PlayerServices.GetPlayerHealth() > i);
             }
         }
-        
+
         public void LoseHealth()
         {
             Debug.Log(PlayerServices.GetPlayerHealth());
             var currentHeart = _hearts[PlayerServices.GetPlayerHealth()];
 
-            
+
             currentHeart.SetVisible(true);
             DOTween.defaultEaseType = Ease.InQuad;
-            currentHeart.transform.DOMove(Vector3.down * 10, _heartAnimationTime, false);
+            currentHeart.transform.DOMove(Vector3.down * 10, _heartAnimationTime);
             currentHeart.transform.DORotate(Vector3.forward * 1800, _heartAnimationTime, RotateMode.FastBeyond360);
         }
     }

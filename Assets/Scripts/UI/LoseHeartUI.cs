@@ -5,9 +5,8 @@ namespace Game.UI
 {
     public class LoseHeartUI : MonoBehaviour
     {
-        
         private Image _heartImage;
-        
+
         public void SetVisible(bool visible)
         {
             _heartImage.enabled = visible;
@@ -17,6 +16,5 @@ namespace Game.UI
         {
             _heartImage = GetComponent<Image>();
         }
-        
     }
 }

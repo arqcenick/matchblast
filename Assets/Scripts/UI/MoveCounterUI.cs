@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Game.Behaviours;
 using TMPro;
 using UnityEngine;
@@ -9,11 +7,10 @@ namespace Game.UI
 {
     public class MoveCounterUI : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI _counter;
-        
         private BoardBehaviour _boardBehaviour;
-        
+
+        [SerializeField] private TextMeshProUGUI _counter;
+
         private void Awake()
         {
             _boardBehaviour = FindObjectOfType<BoardBehaviour>();
@@ -30,6 +27,7 @@ namespace Game.UI
         {
             _counter.SetText(count.ToString());
         }
+
         private void OnDestroy()
         {
             _boardBehaviour.onLevelStarted -= InitializeText;
@@ -37,5 +35,3 @@ namespace Game.UI
         }
     }
 }
-    
-

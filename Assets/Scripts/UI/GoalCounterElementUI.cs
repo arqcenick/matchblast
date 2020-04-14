@@ -8,12 +8,11 @@ namespace Game.UI
 {
     public class GoalCounterElementUI : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI _text;
         private Image _spriteRenderer;
-        
-        
-        
+
+        [SerializeField] private TextMeshProUGUI _text;
+
+
         public void SetTileColor(TileColor color)
         {
             _spriteRenderer.sprite = PrefabAccessor.Instance.TileSprites[(int) color];
@@ -28,7 +27,6 @@ namespace Game.UI
         {
             _spriteRenderer = GetComponent<Image>();
             _text = GetComponentInChildren<TextMeshProUGUI>();
-            
         }
     }
 }

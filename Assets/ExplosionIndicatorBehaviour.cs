@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace Game.Behaviours
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class ExplosionIndicatorBehaviour : MonoBehaviour
     {
+        [SerializeField] private List<Sprite> _explosions;
+
         private SpriteRenderer _spriteRenderer;
-        [SerializeField]
-        private List<Sprite> _explosions;
 
         public void ChangeExplosionType(MatchType type)
         {
@@ -31,11 +28,10 @@ namespace Game.Behaviours
                     break;
             }
         }
-        
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
     }
-
 }

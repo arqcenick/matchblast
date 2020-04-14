@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Game.Behaviours;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-
 
 namespace Game.Behaviours
 {
@@ -15,9 +9,10 @@ namespace Game.Behaviours
         // private static readonly IInput Input = new MouseInput();
 
         private BoardBehaviour _board;
+
         private void Start()
         {
-            _board = GetComponent<BoardBehaviour>(); 
+            _board = GetComponent<BoardBehaviour>();
             Debug.Log(_board.Tiles);
             RefreshTiles(_board.Tiles);
             _board.onTileCreated += ListenToTileClick;
@@ -30,13 +25,9 @@ namespace Game.Behaviours
 
         private void RefreshTiles(TileBehaviour[,] tiles)
         {
-            for (int i = 0; i < tiles.GetLength(0); i++)
-            {
-                for (int j = 0; j < tiles.GetLength(1); j++)
-                {
-                    tiles[i, j].onClick += OnTileClicked;
-                }
-            }
+            for (var i = 0; i < tiles.GetLength(0); i++)
+            for (var j = 0; j < tiles.GetLength(1); j++)
+                tiles[i, j].onClick += OnTileClicked;
         }
 
         private void OnTileClicked(TileBehaviour tile)
@@ -44,19 +35,13 @@ namespace Game.Behaviours
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 if (tile.PowerUp == PowerUpType.None)
-                {
                     _board.OnTileMatched(tile);
-                }
                 else
-                {
                     _board.OnTileActivated(tile);
-                }
             }
-
         }
     }
 }
-
 
 
 public interface IInput
@@ -65,7 +50,6 @@ public interface IInput
     bool GetInputUp();
 
     Vector3 GetPointerPosition();
-
 }
 
 public class MouseInput : IInput
@@ -73,7 +57,6 @@ public class MouseInput : IInput
     public bool GetInputUp()
     {
         return Input.GetMouseButtonUp(0);
-        
     }
 
     public Vector3 GetPointerPosition()
