@@ -147,4 +147,4 @@ MonoBehaviour:
       _coordinate: {x: 7, y: 7}
   _levelName: level_1
   _starObjectives: 05000000070000000a000000
-  _totalMoves: 20
+  _totalMoves: 3

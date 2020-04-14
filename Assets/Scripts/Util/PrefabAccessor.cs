@@ -16,7 +16,11 @@ namespace Game.Util
 
         private static Queue<MonoBehaviour> _objectPool = new Queue<MonoBehaviour>(MaxPoolSize);
 
-        private static int _canRecycled = 0;
+
+        public static void Reset()
+        {
+            _objectPool.Clear();
+        }
         
         public static T Instantiate<T>(T original, Vector3 position, Quaternion rotation, Transform parent) where T : MonoBehaviour
         {

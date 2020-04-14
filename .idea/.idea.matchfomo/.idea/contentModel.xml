@@ -49,6 +49,7 @@
             <e p="LevelEndUI.cs" t="Include" />
             <e p="LevelManagerUI.cs" t="Include" />
             <e p="LoadingUI.cs" t="Include" />
+            <e p="LoseHeartUI.cs" t="Include" />
             <e p="LoseLevelUI.cs" t="Include" />
             <e p="MoveCounterUI.cs" t="Include" />
             <e p="WinLevelUi.cs" t="Include" />

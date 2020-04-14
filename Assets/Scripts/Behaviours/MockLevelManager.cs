@@ -9,7 +9,7 @@ namespace Game.Behaviours
         {
             if (FindObjectOfType<LevelManager>() == null)
             {
-                SceneReadyEvent.Instance.Invoke();
+                UIEvent<SceneReadyEvent>.Instance.Invoke();
             }
         }
     }

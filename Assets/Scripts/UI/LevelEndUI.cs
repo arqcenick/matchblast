@@ -19,6 +19,9 @@ namespace Game.UI
 
         [SerializeField]
         private WinLevelUi _winLevelPanel;
+        
+        [SerializeField]
+        private LoseLevelUI _loseLevelPanel;
 
         private BoardBehaviour _board;
         
@@ -27,7 +30,13 @@ namespace Game.UI
             _board = FindObjectOfType<BoardBehaviour>();
             _darkeningPanel.enabled = false;
             _darkeningPanel.color = Color.clear;
+
+        }
+
+        private void Start()
+        {
             _board.onPlayerWin += ShowWinGame;
+            _board.onPlayerLose += ShowLoseGame;
         }
 
         private void ShowWinGame(int starCount)
@@ -48,6 +57,9 @@ namespace Game.UI
 
         private void ShowLoseGame()
         {
+            DarkenPanel();
+            _loseLevelPanel.SetHealthVisibilities();
+            _loseLevelPanel.transform.DOMoveX(0, 1f).OnComplete(_loseLevelPanel.LoseHealth);
             
         }
 

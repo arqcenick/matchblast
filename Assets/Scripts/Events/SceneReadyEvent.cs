@@ -2,21 +2,40 @@
 
 namespace Game.Events
 {
-    public class SceneReadyEvent : UnityEvent
+
+    public class MainMenuEvent : UnityEvent
     {
-        public static SceneReadyEvent Instance
+        
+    }
+    public class RetryLevelEvent : UnityEvent
+    {
+        
+    }
+    
+    public class NextLevelEvent : UnityEvent
+    {
+        
+    }
+    
+    public class UIEvent<T> where T: UnityEvent, new()
+    {
+        public static T Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new SceneReadyEvent();
+                    _instance = new T();
                 }
 
                 return _instance;
             }
         }
-        private static SceneReadyEvent _instance;
+        private static T _instance;
+    }
+    
+    public class SceneReadyEvent : UnityEvent
+    {
 
     }
 }

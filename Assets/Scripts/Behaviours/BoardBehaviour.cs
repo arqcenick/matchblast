@@ -164,13 +164,13 @@ namespace Game.Behaviours
         {
             _columnUpdateFlags = new bool[_settings.Width];
             
-            SceneReadyEvent.Instance.AddListener(StartLevel);
+            UIEvent<SceneReadyEvent>.Instance.AddListener(StartLevel);
             
         }
 
         private void OnDestroy()
         {
-            SceneReadyEvent.Instance.RemoveListener(StartLevel);
+            UIEvent<SceneReadyEvent>.Instance.RemoveListener(StartLevel);
 
         }
 
@@ -202,7 +202,6 @@ namespace Game.Behaviours
             {
                 allObjectivesReached &= kv.Value <= 0;
             }
-
             if (allObjectivesReached)
             {
                 onPlayerWin(GetStarCount());

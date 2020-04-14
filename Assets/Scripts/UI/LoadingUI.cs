@@ -30,15 +30,15 @@ namespace Game.UI
 
         private void Awake()
         {
-            WillSceneChangeEvent.Instance.AddListener(Hide);
-            SceneReadyEvent.Instance.AddListener(Show);
+            UIEvent<WillSceneChangeEvent>.Instance.AddListener(Hide);
+            UIEvent<SceneReadyEvent>.Instance.AddListener(Show);
 
         }
 
         private void OnDestroy()
         {
-            WillSceneChangeEvent.Instance.RemoveListener(Hide);
-            SceneReadyEvent.Instance.AddListener(Show);
+            UIEvent<WillSceneChangeEvent>.Instance.RemoveListener(Hide);
+            UIEvent<SceneReadyEvent>.Instance.AddListener(Show);
 
         }
     

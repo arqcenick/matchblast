@@ -4,12 +4,44 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Game.Data;
 using Game.Events;
+using Game.Util;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Game.Behaviours
 {
-    public class LevelManager : MonoBehaviour
+    public static class PlayerServices
+    {
+        private static IPlayer _player;
+
+        private static bool _initialized;
+
+        public static void Initialize(IPlayer player)
+        {
+            _player = player;
+            _initialized = true;
+        }
+        public static int GetPlayerHealth()
+        {
+            Debug.Assert(_initialized);
+            return _player.GetHealth();
+        }
+
+        public static void SetPlayerHealth(int health)
+        {
+            Debug.Assert(_initialized);
+            _player.SetHealth(health);
+        }
+    }
+
+    public interface IPlayer
+    {
+        int GetHealth();
+
+        void SetHealth(int health);
+    }
+    
+    public class LevelManager : MonoBehaviour, IPlayer
     {
         
         [SerializeField]
@@ -27,7 +59,7 @@ namespace Game.Behaviours
 
         public void StartLevel()
         {
-            WillSceneChangeEvent.Instance.Invoke();
+            UIEvent<WillSceneChangeEvent>.Instance.Invoke();
             transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1);});
         }
 
@@ -36,27 +68,52 @@ namespace Game.Behaviours
             _currentLevel++;
             StartLevel();
         }
-        
 
+        public void RestartLevel()
+        {
+            StartLevel();
+        }
+
+        public void MainMenu()
+        {
+            UIEvent<WillSceneChangeEvent>.Instance.Invoke();
+            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(0);});
+        }
+        
         private void Awake()
         {
+
+            PlayerServices.Initialize(this);
             SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
+            UIEvent<NextLevelEvent>.Instance.AddListener(NextLevel);
+            UIEvent<RetryLevelEvent>.Instance.AddListener(RestartLevel);
+            UIEvent<MainMenuEvent>.Instance.AddListener(MainMenu);
+
+            
+            
             DontDestroyOnLoad(gameObject);
             _requiredSpan = TimeSpan.FromSeconds(_healthRegenIntervalSeconds);
-            try
+ 
+            _currentLevel = PlayerPrefs.GetInt("Level");
+            _currentStars = PlayerPrefs.GetInt("Stars");
+            _currentHealth =  PlayerPrefs.GetInt("Health");
+            int initialized = PlayerPrefs.GetInt("init");
+
+            if (initialized == 0)
             {
-                PlayerPrefs.GetInt("Level", _currentLevel);
-                PlayerPrefs.GetInt("Stars", _currentStars);
-            }
-            catch
-            {
-                _currentLevel = 1;
+                _currentLevel = 0;
                 _currentStars = 0;
                 _currentHealth = 5;
+            
                 PlayerPrefs.SetInt("Level", _currentLevel);
                 PlayerPrefs.SetInt("Stars", _currentStars);
                 PlayerPrefs.SetInt("Health", _currentHealth);
+                PlayerPrefs.SetInt("init", 1);
+                PlayerPrefs.Save();
             }
+
+            
      
         }
         
@@ -72,6 +129,8 @@ namespace Game.Behaviours
             {
                 _lastDate = DateTime.Now;
             }
+            UIEvent<SceneReadyEvent>.Instance.Invoke();
+
         }
         
         private void Update()
@@ -90,24 +149,63 @@ namespace Game.Behaviours
             if (scene.buildIndex == 1)
             {
                 FindObjectOfType<BoardPersistenceBehaviour>().SetBoardSetting(_levels[_currentLevel]);
-                SceneReadyEvent.Instance.Invoke();
+                FindObjectOfType<BoardBehaviour>().onPlayerWin += OnPlayerWin;
+                FindObjectOfType<BoardBehaviour>().onPlayerLose += OnPlayerLose;
             }
+            
+            UIEvent<SceneReadyEvent>.Instance.Invoke();
         }
         
+        private void OnSceneUnloaded(Scene scene)
+        {
+            PlayerPrefs.SetInt("Level", _currentLevel);
+            PlayerPrefs.SetInt("Stars", _currentStars);
+            PlayerPrefs.SetInt("Health", _currentHealth);
+            SimpleObjectPool.Reset();
+            // if (scene.buildIndex == 1)
+            // {
+            //     FindObjectOfType<BoardBehaviour>().onPlayerWin -= OnPlayerWin;
+            //     FindObjectOfType<BoardBehaviour>().onPlayerLose -= OnPlayerLose;
+            // }
+        }
+        
+        private void OnPlayerWin(int stars)
+        {
+            _currentStars += stars;
+            _currentLevel++;
+            
+        }
+
+        private void OnPlayerLose()
+        {
+            _currentHealth--;
+        }
+
         private void OnApplicationQuit()
         {
             PlayerPrefs.SetString("date_time", DateTime.Now.ToBinary().ToString());
             PlayerPrefs.SetInt("Level", _currentLevel);
             PlayerPrefs.SetInt("Stars", _currentStars);
             PlayerPrefs.SetInt("Health", _currentHealth);
+            PlayerPrefs.SetInt("init", 1);
+
         }
         
         private void AddHealth(int health)
         {
             //Play health gain animation
-            _currentHealth = Math.Min(5, _currentHealth + health);
+            SetHealth(Math.Min(5, _currentHealth + health));
         }
 
+        public int GetHealth()
+        {
+            return _currentHealth;
+        }
+
+        public void SetHealth(int health)
+        {
+            _currentHealth = health;
+        }
     }
     
     

@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using Game.Behaviours;
+using Game.Events;
 using UnityEngine;
 
 namespace Game.UI
@@ -30,7 +31,7 @@ namespace Game.UI
 
         public void OnNextLevel()
         {
-            
+            UIEvent<NextLevelEvent>.Instance.Invoke();
         }
     }
 }
