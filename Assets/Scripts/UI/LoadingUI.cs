@@ -1,59 +1,70 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using DG.Tweening;
 using Game.Behaviours;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Game.Events;
 
-public class LoadingUI : MonoBehaviour
+
+namespace Game.UI
 {
-
-    [SerializeField]
-    private Transform _panel;
-    
-    [SerializeField]
-    private Transform _open;
-    
-    [SerializeField]
-    private Transform _closed;
-
-    private Vector3 _previousPosition;
-    
-    [SerializeField]
-    private bool _isClosed = false;
-
-    private LevelManager _manager;
-    private void Awake()
+    public class LoadingUI : MonoBehaviour
     {
-        _manager = FindObjectOfType<LevelManager>();
-        if (_manager != null)
+
+        [SerializeField]
+        private Transform _panel;
+    
+        [SerializeField]
+        private Transform _open;
+    
+        [SerializeField]
+        private Transform _closed;
+
+        private Vector3 _previousPosition;
+    
+        [SerializeField]
+        private bool _isClosed = false;
+
+        private void Awake()
         {
-            _manager.onLevelStart += Toggle;
-            _manager.onLevelReady += Toggle;
-            if (_isClosed)
+            WillSceneChangeEvent.Instance.AddListener(Hide);
+            SceneReadyEvent.Instance.AddListener(Show);
+
+        }
+
+        private void OnDestroy()
+        {
+            WillSceneChangeEvent.Instance.RemoveListener(Hide);
+            SceneReadyEvent.Instance.AddListener(Show);
+
+        }
+    
+        private void Hide()
+        {
+            if (!_isClosed)
             {
-                _panel.transform.position = _closed.transform.position;
+                Move(_closed);
+                _isClosed = true;
             }
         }
-        
 
-    }
+        private void Show()
+        {
+            if (_isClosed)
+            {
+                Move(_open);
+                _isClosed = false;
+            }
+        }
 
-    private void OnDestroy()
-    {
-        if (_manager != null) _manager.onLevelStart -= Toggle;
-        if (_manager != null) _manager.onLevelReady -= Toggle;
-    }
-
-    private void Toggle()
-    {
-        _isClosed = _isClosed ? Move(_open) : Move(_closed);
-    }
-
-    private bool Move(Transform target)
-    {
-        _panel.transform.DOMoveY(target.position.y, 0.5f);
-        return !_isClosed;
+        private bool Move(Transform target)
+        {
+            _panel.transform.DOMoveY(target.position.y, 0.5f);
+            return !_isClosed;
+        }
     }
 }
+

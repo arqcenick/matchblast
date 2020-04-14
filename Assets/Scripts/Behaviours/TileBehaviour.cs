@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using  DG.Tweening;
 using DG.Tweening.Core.Easing;
+using Game.Util;
 
 namespace Game.Behaviours
 {
@@ -35,7 +36,6 @@ namespace Game.Behaviours
         None,
 
     }
-    
     
     [RequireComponent(typeof(ExplosionIndicatorBehaviour))]
     [RequireComponent(typeof(SpriteRenderer))]
@@ -103,7 +103,7 @@ namespace Game.Behaviours
             yield return null;
             if (_destroyed)
             {
-                transform.DOScale(Vector3.one * 0.1f, 0.2f).OnComplete(()=>                Destroy(gameObject));
+                transform.DOScale(Vector3.one * 0.1f, 0.2f).OnComplete(()=>                SimpleObjectPool.Destroy(this));
             }
         }
     

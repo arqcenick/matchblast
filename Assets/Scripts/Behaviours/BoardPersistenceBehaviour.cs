@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Data;
+using Game.Util;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,9 +16,7 @@ namespace Game.Behaviours
 
         public void CreateRandomBoard()
         {
-
             ClearBoard();
-
             _board.Tiles = new TileBehaviour[_board.Settings.Width,_board.Settings.Height];
             for (int i = 0; i < _board.Settings.Width; i++)
             {
@@ -38,7 +37,6 @@ namespace Game.Behaviours
                 for (int j = 0; j < _board.Tiles.GetLength(1); j++)
                 {
                     tiles[i, j] = new TileData(_board.Tiles[i,j].ColorIndex, _board.Tiles[i,j].Coordinate);;
-                    // tiles[i, j].SetData(_board.Tiles[i,j].ColorIndex, _board.Tiles[i,j].transform.localPosition);
                 }
             }
             _board.Settings.SaveSettings(tiles);
@@ -58,7 +56,7 @@ namespace Game.Behaviours
                 for (int j = 0; j < _board.Settings.Height; j++)
                 {
                     var tile = _board.Settings.GetTileDataAt(i, j);
-                    _board.Tiles[i, j] = Instantiate(PrefabAccessor.Instance.Prefabs[0], _board.GetWorldPosition(tile.Coordinate.x, tile.Coordinate.y), Quaternion.identity, transform);
+                    _board.Tiles[i, j] = SimpleObjectPool.Instantiate(PrefabAccessor.Instance.Prefabs[0], _board.GetWorldPosition(tile.Coordinate.x, tile.Coordinate.y), Quaternion.identity, transform);
                     _board.Tiles[i, j].ColorIndex = tile.PrefabIndex;
                     _board.Tiles[i, j].SetCoordinate(new Vector2Int(i,j));
                 }
@@ -91,14 +89,20 @@ namespace Game.Behaviours
         }
         private void Awake()
         {
-            ClearBoard();
-            LoadBoard();
-            SetBoardFrame();
+            UpdateBoard();
         }
 
-        private void SetBoardFrame()
+        public void SetBoardSetting(BoardSettings settings)
         {
-            
+            _board.Settings = settings;
+            UpdateBoard();
         }
+
+        private void UpdateBoard()
+        {
+            ClearBoard();
+            LoadBoard();
+        }
+        
     }
 }

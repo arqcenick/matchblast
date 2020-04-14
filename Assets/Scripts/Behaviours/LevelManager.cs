@@ -2,20 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Game.Data;
+using Game.Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Game.Behaviours
 {
-    
     public class LevelManager : MonoBehaviour
     {
-
-        public Action onLevelStart;
-        public Action onLevelReady;
         
         [SerializeField]
-        private List<Scene> _levels;
+        private List<BoardSettings> _levels;
 
         private int _currentLevel;
         private int _currentHealth;
@@ -29,23 +27,16 @@ namespace Game.Behaviours
 
         public void StartLevel()
         {
-            onLevelStart();
+            WillSceneChangeEvent.Instance.Invoke();
             transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1);});
         }
 
         public void NextLevel()
         {
-            onLevelStart();
-            
+            _currentLevel++;
+            StartLevel();
         }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            if (scene.buildIndex == 1)
-            {
-                onLevelReady();
-            }
-        }
+        
 
         private void Awake()
         {
@@ -83,7 +74,6 @@ namespace Game.Behaviours
             }
         }
         
-
         private void Update()
         {
             TimeSpan span = DateTime.Now - _lastDate;
@@ -94,13 +84,16 @@ namespace Game.Behaviours
                 _lastDate = DateTime.Now;
             }
         }
-
-        private void AddHealth(int health)
+        
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            //Play health gain animation
-            _currentHealth = Math.Min(5, _currentHealth + health);
+            if (scene.buildIndex == 1)
+            {
+                FindObjectOfType<BoardPersistenceBehaviour>().SetBoardSetting(_levels[_currentLevel]);
+                SceneReadyEvent.Instance.Invoke();
+            }
         }
-
+        
         private void OnApplicationQuit()
         {
             PlayerPrefs.SetString("date_time", DateTime.Now.ToBinary().ToString());
@@ -108,6 +101,13 @@ namespace Game.Behaviours
             PlayerPrefs.SetInt("Stars", _currentStars);
             PlayerPrefs.SetInt("Health", _currentHealth);
         }
+        
+        private void AddHealth(int health)
+        {
+            //Play health gain animation
+            _currentHealth = Math.Min(5, _currentHealth + health);
+        }
+
     }
     
     

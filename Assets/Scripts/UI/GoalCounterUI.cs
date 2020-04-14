@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 namespace Game.UI
 {
-    public class GoalCounterUIBehaviour : MonoBehaviour
+    public class GoalCounterUI : MonoBehaviour
     {
 
         [SerializeField]
-        private List<GoalCounterElement> _goalCounters;
+        private List<GoalCounterElementUI> _goalCounters;
 
         private Dictionary<TileColor, int> _objectives;
         

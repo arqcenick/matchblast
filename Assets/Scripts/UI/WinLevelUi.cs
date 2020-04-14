@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using Game.Behaviours;
 using UnityEngine;
 
 namespace Game.UI
@@ -25,6 +26,11 @@ namespace Game.UI
                 .DOPath(path, _starAnimationTime, PathType.CatmullRom, PathMode.Ignore);
             currentStar.transform.DOPunchScale(Vector3.one * 1.5f, _starAnimationTime, 1, 1);
             _currentStarCount++;
+        }
+
+        public void OnNextLevel()
+        {
+            
         }
     }
 }

@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Data;
+using Game.Events;
+using Game.Util;
 using TMPro;
 using UnityEngine;
 using UnityEngine.WSA;
@@ -22,6 +25,8 @@ namespace Game.Behaviours
         public Action<int> onPlayerMoved;
 
         public Action<int> onPlayerWin;
+
+        public Action onPlayerLose;
         
         public TileBehaviour[,] Tiles
         {
@@ -29,8 +34,12 @@ namespace Game.Behaviours
             set => _tiles = value;
         }
 
-        public BoardSettings Settings => _settings;
-        
+        public BoardSettings Settings
+        {
+            get => _settings;
+            set => _settings = value;
+        }
+
         [SerializeField]
         private BoardSettings _settings;
         
@@ -42,7 +51,6 @@ namespace Game.Behaviours
 
         private int _movesLeft;
 
-        private LevelManager _levelManager;
         
         private void DestroyTileAt(Vector2Int coordinate)
         {
@@ -56,7 +64,7 @@ namespace Game.Behaviours
             
             var tilePrefab = PrefabAccessor.Instance.Prefabs[0];
             Vector2 position = GetWorldPosition(x, y);
-            var tile = Instantiate(tilePrefab, position, Quaternion.identity, transform);
+            var tile = SimpleObjectPool.Instantiate(tilePrefab, position, Quaternion.identity, transform);
             tile.SetCoordinate(new Vector2Int(x, y));
             var randomTileIndex = Random.Range(0, 5);
             tile.ColorIndex = (TileColor) randomTileIndex;
@@ -155,12 +163,14 @@ namespace Game.Behaviours
         private void Awake()
         {
             _columnUpdateFlags = new bool[_settings.Width];
-            _levelManager = FindObjectOfType<LevelManager>();
-            if (_levelManager != null)
-            {
-                _levelManager.onLevelReady += StartLevel;
-            }
+            
+            SceneReadyEvent.Instance.AddListener(StartLevel);
+            
+        }
 
+        private void OnDestroy()
+        {
+            SceneReadyEvent.Instance.RemoveListener(StartLevel);
 
         }
 
@@ -169,18 +179,6 @@ namespace Game.Behaviours
             _columnUpdateFlags[columnIndex] = true;
         }
         
-        
-
-        private void Start()
-        {
-            if(_levelManager == null)
-            {
-                
-                StartLevel(); 
-                Debug.Log("Starting level");
-            }
-        }
-
         public void StartLevel()
         {
             CheckMatches();
@@ -199,21 +197,32 @@ namespace Game.Behaviours
         {
             _movesLeft = Mathf.Max(0, _movesLeft - 1);
             onPlayerMoved(_movesLeft);
-            onPlayerWin(3);
             bool allObjectivesReached = true;
             foreach (var kv in _gameObjectives)
             {
-                allObjectivesReached &= kv.Value == 0;
+                allObjectivesReached &= kv.Value <= 0;
             }
 
             if (allObjectivesReached)
             {
-                
+                onPlayerWin(GetStarCount());
             }
             else if(_movesLeft == 0)
             {
-                   
+                onPlayerLose();
             }
+        }
+
+        private int GetStarCount()
+        {
+            for (int i = 0; i < _settings.StarObjectiveList.Count; i++)
+            {
+                if (_movesLeft < _settings.StarObjectiveList[i])
+                {
+                    return i;
+                }
+            }
+            return 3;
         }
 
         private void Update()

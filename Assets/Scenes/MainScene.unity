@@ -541,7 +541,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b851894896e1de24eb6f721462c74109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levels: []
+  _levels:
+  - {fileID: 11400000, guid: ee38d5fd61d117e4badf1461f6bb2afe, type: 2}
+  - {fileID: 11400000, guid: 7c91de230b4ae5e4ea4a4f1d7100bdda, type: 2}
+  - {fileID: 11400000, guid: aa285c9fa4e591942a8fb94d178e768e, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   _healthRegenIntervalSeconds: 3600
 --- !u!114 &797601866
 MonoBehaviour:

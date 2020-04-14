@@ -1,11 +1,12 @@
 ﻿using Game.Behaviours;
+using Game.Util;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.UI
 {
-    public class GoalCounterElement : MonoBehaviour
+    public class GoalCounterElementUI : MonoBehaviour
     {
         [SerializeField]
         private TextMeshProUGUI _text;

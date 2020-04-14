@@ -32,6 +32,11 @@ namespace Game.Data
 
                 }
             }
+
+            if (GUILayout.Button("Save"))
+            {
+                b.SaveSettings();
+            }
             
             b.SetObjectives(b.Objectives);
             DrawDefaultInspector();
