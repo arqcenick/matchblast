@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using Game.Data;
 using Game.Events;
 using Game.Util;
@@ -53,7 +55,15 @@ namespace Game.Behaviours
             var position = GetWorldPosition(x, y);
             var tile = SimpleObjectPool.Instantiate(tilePrefab, position, Quaternion.identity, transform);
             tile.SetCoordinate(new Vector2Int(x, y));
-            var randomTileIndex = Random.Range(0, 5);
+            var selections = new List<int>();
+            for (int i = 0; i < (int) TileColor.Count; i++)
+            {
+                if (_settings.Available[i])
+                {
+                    selections.Add(i);
+                }
+            }
+            var randomTileIndex = selections[Random.Range(0, selections.Count)];
             tile.ColorIndex = (TileColor) randomTileIndex;
             onTileCreated?.Invoke(tile);
             return tile;
@@ -102,26 +112,41 @@ namespace Game.Behaviours
             return result;
         }
 
-        public int DestroyRecursively(Vector2Int tilePosition)
+        public List<TileBehaviour> DestroyRecursively(Vector2Int tilePosition)
         {
+            List<TileBehaviour> destroyedTiles = new List<TileBehaviour>();
             var destroyedCount = 1;
             var originTile = Tiles[tilePosition.x, tilePosition.y];
             DestroyTileAt(tilePosition);
+            destroyedTiles.Add(originTile);
             var neighbours = GetNeighbours(tilePosition);
             foreach (var neighbour in neighbours)
-                if (!neighbour.Destroyed && neighbour.ColorIndex == originTile.ColorIndex)
-                    destroyedCount += DestroyRecursively(neighbour.Coordinate);
+                if (neighbour.Destroyed == DestructionWay.None && neighbour.ColorIndex == originTile.ColorIndex)
+                    destroyedTiles.AddRange(DestroyRecursively(neighbour.Coordinate));
 
-            return destroyedCount;
+            return destroyedTiles;
         }
 
-        public void CreatePowerUpAtTile(TileBehaviour tile, int destroyedTiles)
+        public void CreatePowerUpAtTile(TileBehaviour tile, List<TileBehaviour> destroyedTiles)
         {
-            if (destroyedTiles >= 9)
+            
+            int destroyedTilesCount = destroyedTiles.Count;
+            if (destroyedTilesCount >= 5)
+            {
+                foreach (var destroyedTile in destroyedTiles)
+                {
+                    destroyedTile.SetConvertedBy(tile);
+                }
+            }
+            tile.transform.localPosition += Vector3.back * 2;
+            if (destroyedTilesCount >= 9)
                 tile.SetAsPowerUp(PowerUpType.TNT);
-            else if (destroyedTiles >= 7)
+            else if (destroyedTilesCount >= 7)
                 tile.SetAsPowerUp(PowerUpType.Dynamite);
-            else if (destroyedTiles >= 5) tile.SetAsPowerUp(PowerUpType.Bomb);
+            else if (destroyedTilesCount >= 5) tile.SetAsPowerUp(PowerUpType.Bomb);
+
+
+            
         }
 
         public Vector2 GetWorldPosition(int x, int y)
@@ -167,6 +192,43 @@ namespace Game.Behaviours
             if (allObjectivesReached)
                 onPlayerWin(GetStarCount());
             else if (_movesLeft == 0) onPlayerLose();
+            
+        }
+
+        private void Reshuffle()
+        {
+            var tempList = new List<TileBehaviour>();
+            foreach (var tile in Tiles)
+            {
+                tempList.Add(tile);
+            }
+            
+            Shuffle(tempList);
+            int counter = 0;
+            for (int i = 0; i < _settings.Width; i++)
+            {
+                for (int j = 0; j < _settings.Height; j++)
+                {
+                    Tiles[i, j] = tempList[counter];
+                    Tiles[i,j].SetCoordinate(new Vector2Int(i,j));
+                    Tiles[i, j].transform.DOMove(GetWorldPosition(i,j),0.5f);
+                    counter++;
+                }
+            }
+            
+        }
+        
+        private void Shuffle<T>(IList<T> list)  
+        {  
+            
+            int n = list.Count;  
+            while (n > 1) {  
+                n--;
+                int k = Random.Range(0,n + 1);  
+                T value = list[k];  
+                list[k] = list[n];  
+                list[n] = value;  
+            }  
         }
 
         private int GetStarCount()
@@ -186,7 +248,7 @@ namespace Game.Behaviours
                     shouldCheckWinCondition = true;
                     var counter = 0;
                     for (var j = 0; j < _settings.Height; j++)
-                        if (Tiles[i, j].Destroyed)
+                        if (Tiles[i, j].Destroyed != DestructionWay.None)
                         {
                             counter++;
                             for (var k = j; k < _settings.Height - 1; k++)
@@ -210,7 +272,14 @@ namespace Game.Behaviours
                 }
 
             if (shouldCheckWinCondition) CheckWinLoseCondition();
-        }
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Reshuffle();
+            }
+#endif
+
+           }
 
         private void CheckMatches()
         {
@@ -228,13 +297,11 @@ namespace Game.Behaviours
                     matchGroups.Add(matchGroup);
                 }
 
-            // foreach (var matchGroup in matchGroups)
-            // {
-            //     foreach (var coordinate in matchGroup)
-            //     {
-            //         _tiles[coordinate.x, coordinate.y].transform.localScale *= 0.5f;
-            //     }
-            // }
+            if (matchGroups.Count == 0)
+            {
+                Reshuffle();
+            }
+            
         }
 
         private MatchType GetMatchTypeForCount(int count)
@@ -266,6 +333,13 @@ namespace Game.Behaviours
             {
                 var destroyed = DestroyRecursively(tile.Coordinate);
                 CreatePowerUpAtTile(tile, destroyed);
+            }
+            else
+            {
+                // Sequence shakeSequence = DOTween.Sequence();
+                // shakeSequence.Append(transform.DORotate(Vector3.forward * 30, 0.5f)).Append(transform.DORotate(Vector3.forward * -15, 0.5f));
+                
+                tile.transform.DOPunchRotation(Vector3.forward * 10f, 0.6f, 5).OnComplete(() => tile.transform.DORotateQuaternion(Quaternion.identity, 0.1f));
             }
         }
 
@@ -312,5 +386,6 @@ namespace Game.Behaviours
                 }
             }
         }
+        
     }
 }

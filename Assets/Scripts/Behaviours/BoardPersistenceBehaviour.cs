@@ -30,7 +30,6 @@ namespace Game.Behaviours
                 tiles[i, j] = new TileData(_board.Tiles[i, j].ColorIndex, _board.Tiles[i, j].Coordinate);
                 ;
             }
-
             _board.Settings.SaveSettings(tiles);
         }
 
@@ -79,10 +78,17 @@ namespace Game.Behaviours
             UpdateBoard();
         }
 
-        public void SetBoardSetting(BoardSettings settings)
+        public void SetBoardSetting(BoardSettings settings, bool noUpdate=false)
         {
             _board.Settings = settings;
-            UpdateBoard();
+            if (noUpdate)
+            {
+                ClearBoard();
+            }
+            else
+            {
+                UpdateBoard();
+            }
         }
 
         private void UpdateBoard()

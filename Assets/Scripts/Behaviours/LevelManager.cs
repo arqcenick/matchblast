@@ -32,6 +32,17 @@ namespace Game.Behaviours
             Debug.Assert(_initialized);
             _player.SetHealth(health);
         }
+
+        public static int GetPlayerStars()
+        {
+            Debug.Assert(_initialized);
+            return _player.GetStars();
+        }
+
+        public static int GetCurrentLevel()
+        {
+            return _player.GetCurrentLevel();
+        }
     }
 
     public interface IPlayer
@@ -39,6 +50,8 @@ namespace Game.Behaviours
         int GetHealth();
 
         void SetHealth(int health);
+        int GetStars();
+        int GetCurrentLevel();
     }
 
     public class LevelManager : MonoBehaviour, IPlayer
@@ -66,15 +79,26 @@ namespace Game.Behaviours
             _currentHealth = health;
         }
 
+        public int GetStars()
+        {
+            return _currentStars;
+        }
+
+        public int GetCurrentLevel()
+        {
+            return _currentLevel;
+        }
+
         public void StartLevel()
         {
             UIEvent<WillSceneChangeEvent>.Instance.Invoke();
+            UIEvent<HidePlayerCounters>.Instance.Invoke();
+
             transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1); });
         }
 
         public void NextLevel()
         {
-            _currentLevel++;
             StartLevel();
         }
 
@@ -97,7 +121,6 @@ namespace Game.Behaviours
             UIEvent<NextLevelEvent>.Instance.AddListener(NextLevel);
             UIEvent<RetryLevelEvent>.Instance.AddListener(RestartLevel);
             UIEvent<MainMenuEvent>.Instance.AddListener(MainMenu);
-
 
             DontDestroyOnLoad(gameObject);
             _requiredSpan = TimeSpan.FromSeconds(_healthRegenIntervalSeconds);
@@ -122,7 +145,9 @@ namespace Game.Behaviours
         }
 
         private void Start()
-        {
+        {            
+            UIEvent<ShowPlayerCounters>.Instance.Invoke();
+            
             _currentDate = DateTime.Now;
             try
             {
@@ -150,9 +175,23 @@ namespace Game.Behaviours
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            Debug.Log(_currentLevel);
             if (scene.buildIndex == 1)
             {
-                FindObjectOfType<BoardPersistenceBehaviour>().SetBoardSetting(_levels[_currentLevel]);
+                BoardSettings level;
+                if (_currentLevel < _levels.Count)
+                {
+                    level = _levels[_currentLevel];
+                    FindObjectOfType<BoardPersistenceBehaviour>().SetBoardSetting(level);
+                }
+                else
+                {
+                    level = BoardSettings.GetRandomLevel();
+                    FindObjectOfType<BoardPersistenceBehaviour>().SetBoardSetting(level, true);
+                    FindObjectOfType<BoardPersistenceBehaviour>().CreateRandomBoard();
+
+                }
+
                 FindObjectOfType<BoardBehaviour>().onPlayerWin += OnPlayerWin;
                 FindObjectOfType<BoardBehaviour>().onPlayerLose += OnPlayerLose;
             }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Game.UI
 {
-    public class LoadingUI : MonoBehaviour
+
+    public abstract class OpenCloseUI : MonoBehaviour
     {
         [SerializeField] private Transform _closed;
 
@@ -13,9 +14,36 @@ namespace Game.UI
         [SerializeField] private Transform _open;
 
         [SerializeField] private Transform _panel;
+        
+        protected void Hide()
+        {
+            if (!_isClosed)
+            {
+                Move(_closed);
+                _isClosed = true;
+            }
+        }
+        
+        protected void Show()
+        {
+            if (_isClosed)
+            {
+                Move(_open);
+                _isClosed = false;
+            }
+        }
+        
+        private bool Move(Transform target)
+        {
+            _panel.transform.DOMoveY(target.position.y, 0.5f);
+            return !_isClosed;
+        }
+    }
+    
 
-        private Vector3 _previousPosition;
-
+    public class LoadingUI : OpenCloseUI
+    {
+        
         private void Awake()
         {
             UIEvent<WillSceneChangeEvent>.Instance.AddListener(Hide);
@@ -27,29 +55,7 @@ namespace Game.UI
             UIEvent<WillSceneChangeEvent>.Instance.RemoveListener(Hide);
             UIEvent<SceneReadyEvent>.Instance.AddListener(Show);
         }
+        
 
-        private void Hide()
-        {
-            if (!_isClosed)
-            {
-                Move(_closed);
-                _isClosed = true;
-            }
-        }
-
-        private void Show()
-        {
-            if (_isClosed)
-            {
-                Move(_open);
-                _isClosed = false;
-            }
-        }
-
-        private bool Move(Transform target)
-        {
-            _panel.transform.DOMoveY(target.position.y, 0.5f);
-            return !_isClosed;
-        }
     }
 }

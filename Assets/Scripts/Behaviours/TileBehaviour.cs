@@ -23,7 +23,15 @@ namespace Game.Behaviours
         Purple,
         Yellow,
         Red,
+        Count,
         None
+    }
+
+    public enum DestructionWay
+    {
+        None,
+        Matched,
+        Converted,
     }
 
     public enum PowerUpType
@@ -71,8 +79,8 @@ namespace Game.Behaviours
             }
         }
 
-        public bool Destroyed { get; private set; }
-
+        public DestructionWay Destroyed { get; private set; }
+        
         public PowerUpType PowerUp { get; private set; } = PowerUpType.None;
 
         public Vector2Int Coordinate { get; private set; }
@@ -80,16 +88,23 @@ namespace Game.Behaviours
         public Vector2 Size => _size;
 
 
+        private TileBehaviour _convertTarget;
+        
         public void DestroyTile()
         {
-            Destroyed = true;
+            Destroyed = DestructionWay.Matched;
             StartCoroutine(DeathAnimation());
         }
 
         private IEnumerator DeathAnimation()
         {
             yield return null;
-            if (Destroyed) transform.DOScale(Vector3.one * 0.1f, 0.2f).OnComplete(() => SimpleObjectPool.Destroy(this));
+            if (Destroyed == DestructionWay.Matched) transform.DOScale(Vector3.one * 0.1f, 0.2f).OnComplete(() => SimpleObjectPool.Destroy(this));
+            else if (Destroyed == DestructionWay.Converted)
+            {
+                transform.localPosition += Vector3.back;
+                transform.DOMove(_convertTarget.transform.position, 0.5f).OnComplete(() => SimpleObjectPool.Destroy(this));
+            }
         }
 
 
@@ -112,12 +127,17 @@ namespace Game.Behaviours
             Coordinate = vector2Int;
         }
 
+        public void SetConvertedBy(TileBehaviour tile)
+        {
+            _convertTarget = tile;
+            Destroyed = DestructionWay.Converted;
+        }
         public void SetAsPowerUp(PowerUpType powerUp)
         {
             PowerUp = powerUp;
             _colorIndex = TileColor.None;
             _matchType = MatchType.Empty;
-            Destroyed = false;
+            Destroyed = DestructionWay.None;
             _spriteRenderer.sprite = PrefabAccessor.Instance.PowerUpSprites[(int) powerUp];
         }
 

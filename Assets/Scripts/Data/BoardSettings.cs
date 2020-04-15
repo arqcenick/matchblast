@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.Behaviours;
+using Game.Util;
 using UnityEditor;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Game.Data
 {
@@ -13,7 +15,8 @@ namespace Game.Data
         private BoardSettingsData _data;
 
         [SerializeField] private int _height;
-
+        [SerializeField] private int _width;
+        
         [SerializeField] private string _levelName;
 
         [SerializeField] private Dictionary<TileColor, int> _objectives;
@@ -21,16 +24,18 @@ namespace Game.Data
         [SerializeField] private Vector2 _size;
 
         [SerializeField] private List<int> _starObjectives;
-
+        
+        private List<bool> _available;
 
         [SerializeField] private TileDataList _tileBehaviours;
 
         [SerializeField] private int _totalMoves;
 
-        [SerializeField] private int _width;
         public List<int> StarObjectiveList => _starObjectives;
 
         public Dictionary<TileColor, int> Objectives => _objectives;
+
+        public List<bool> Available => _available;
 
         public int TotalMoves => _totalMoves;
 
@@ -53,6 +58,9 @@ namespace Game.Data
             _data.Tiles = _tileBehaviours;
             _data.Size = _size;
             _data.TotalMoves = _totalMoves;
+            _data.AvailableTiles = _available;
+            _data.Height = _height;
+            _data.Width = _width;
             var path = "Assets/Resources/Levels/" + _levelName + ".asset";
 
 #if UNITY_EDITOR
@@ -88,16 +96,34 @@ namespace Game.Data
                 _size = settingsData.Size;
                 _totalMoves = settingsData.TotalMoves;
                 _objectives = settingsData.ObjectiveDict.AsDictionary();
+                _available = settingsData.AvailableTiles;
             }
             catch
             {
                 Debug.Log("failed to load");
+                var path = "Levels/default_level";
+                var saveFile = Resources.Load<TextAsset>(path);
+                var settingsData = JsonUtility.FromJson<BoardSettingsData>(saveFile.text);
+                _tileBehaviours = settingsData.Tiles;
+                _width = settingsData.Width;
+                _height = settingsData.Height;
+                _levelName = settingsData.LevelName;
+                _size = settingsData.Size;
+                _totalMoves = settingsData.TotalMoves;
+                _objectives = settingsData.ObjectiveDict.AsDictionary();
+                _available = settingsData.AvailableTiles;
             }
+
         }
 
         public void SetObjectives(Dictionary<TileColor, int> objectives)
         {
             _objectives = objectives;
+        }
+        
+        public void SetAvailable(List<bool> available)
+        {
+            _available = available;
         }
 
         [Serializable]
@@ -106,6 +132,7 @@ namespace Game.Data
             public int Height;
             public string LevelName;
             public TileObjectiveDict ObjectiveDict;
+            public List<bool> AvailableTiles;
             public Vector2 Size;
             public StarObjectives StarObjectives;
             public TileDataList Tiles;
@@ -138,6 +165,24 @@ namespace Game.Data
 
                 return result;
             }
+        }
+
+        public static BoardSettings GetRandomLevel()
+        {
+            var settings = PrefabAccessor.Instance.LevelTemplate;
+            settings._width = UnityEngine.Random.Range(6, 10);
+            settings._height = UnityEngine.Random.Range(6, 10);
+            int requiredTurns = UnityEngine.Random.Range(20, 40);
+            settings._starObjectives = new List<int>(){ requiredTurns-15, requiredTurns-13, requiredTurns-10};
+            var objectives = new Dictionary<TileColor, int>();
+            
+            for (int i = 0; i < 5; i++)
+            {
+                objectives.Add((TileColor)i, UnityEngine.Random.Range(0,15));
+            }
+
+            settings._objectives = objectives;
+            return settings;
         }
     }
 }

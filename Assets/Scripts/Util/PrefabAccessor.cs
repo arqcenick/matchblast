@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.Behaviours;
+using Game.Data;
 using UnityEngine;
 
 namespace Game.Util
@@ -55,6 +56,8 @@ namespace Game.Util
 
         [SerializeField] private List<Sprite> _tileSprites;
 
+        [SerializeField] private BoardSettings _levelTemplate;
+
         public static PrefabAccessor Instance
         {
             get
@@ -69,5 +72,6 @@ namespace Game.Util
         public List<Sprite> PowerUpSprites => _powerUpSprites;
 
         public List<Sprite> TileSprites => _tileSprites;
+        public BoardSettings LevelTemplate { get => _levelTemplate; }
     }
 }

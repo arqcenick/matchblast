@@ -12,109 +12,173 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fde80cf4c042e041a821add34446168, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
+  _height: 9
+  _width: 9
+  _levelName: level_2
   _size: {x: 0.5, y: 0.5}
-  _width: 7
-  _height: 7
+  _starObjectives: 04000000080000000c000000
   _tileBehaviours:
     Tiles:
-    - _prefabIndex: 3
-      _coordinate: {x: 0, y: 0}
-    - _prefabIndex: 3
-      _coordinate: {x: 0, y: 1}
-    - _prefabIndex: 2
-      _coordinate: {x: 0, y: 2}
-    - _prefabIndex: 2
-      _coordinate: {x: 0, y: 3}
-    - _prefabIndex: 3
-      _coordinate: {x: 0, y: 4}
-    - _prefabIndex: 3
-      _coordinate: {x: 0, y: 5}
-    - _prefabIndex: 1
-      _coordinate: {x: 0, y: 6}
-    - _prefabIndex: 1
-      _coordinate: {x: 1, y: 0}
-    - _prefabIndex: 0
-      _coordinate: {x: 1, y: 1}
-    - _prefabIndex: 2
-      _coordinate: {x: 1, y: 2}
-    - _prefabIndex: 3
-      _coordinate: {x: 1, y: 3}
-    - _prefabIndex: 0
-      _coordinate: {x: 1, y: 4}
-    - _prefabIndex: 3
-      _coordinate: {x: 1, y: 5}
-    - _prefabIndex: 0
-      _coordinate: {x: 1, y: 6}
-    - _prefabIndex: 1
-      _coordinate: {x: 2, y: 0}
-    - _prefabIndex: 0
-      _coordinate: {x: 2, y: 1}
-    - _prefabIndex: 2
-      _coordinate: {x: 2, y: 2}
-    - _prefabIndex: 3
-      _coordinate: {x: 2, y: 3}
-    - _prefabIndex: 1
-      _coordinate: {x: 2, y: 4}
-    - _prefabIndex: 4
-      _coordinate: {x: 2, y: 5}
-    - _prefabIndex: 0
-      _coordinate: {x: 2, y: 6}
-    - _prefabIndex: 2
-      _coordinate: {x: 3, y: 0}
-    - _prefabIndex: 4
-      _coordinate: {x: 3, y: 1}
-    - _prefabIndex: 0
-      _coordinate: {x: 3, y: 2}
-    - _prefabIndex: 0
-      _coordinate: {x: 3, y: 3}
-    - _prefabIndex: 0
-      _coordinate: {x: 3, y: 4}
-    - _prefabIndex: 1
-      _coordinate: {x: 3, y: 5}
-    - _prefabIndex: 2
-      _coordinate: {x: 3, y: 6}
-    - _prefabIndex: 0
-      _coordinate: {x: 4, y: 0}
-    - _prefabIndex: 3
-      _coordinate: {x: 4, y: 1}
-    - _prefabIndex: 4
-      _coordinate: {x: 4, y: 2}
-    - _prefabIndex: 1
-      _coordinate: {x: 4, y: 3}
-    - _prefabIndex: 4
-      _coordinate: {x: 4, y: 4}
-    - _prefabIndex: 0
-      _coordinate: {x: 4, y: 5}
-    - _prefabIndex: 0
-      _coordinate: {x: 4, y: 6}
-    - _prefabIndex: 1
-      _coordinate: {x: 5, y: 0}
-    - _prefabIndex: 1
-      _coordinate: {x: 5, y: 1}
-    - _prefabIndex: 4
-      _coordinate: {x: 5, y: 2}
-    - _prefabIndex: 4
-      _coordinate: {x: 5, y: 3}
-    - _prefabIndex: 4
-      _coordinate: {x: 5, y: 4}
-    - _prefabIndex: 2
-      _coordinate: {x: 5, y: 5}
-    - _prefabIndex: 2
-      _coordinate: {x: 5, y: 6}
-    - _prefabIndex: 0
-      _coordinate: {x: 6, y: 0}
-    - _prefabIndex: 0
-      _coordinate: {x: 6, y: 1}
-    - _prefabIndex: 0
-      _coordinate: {x: 6, y: 2}
-    - _prefabIndex: 1
-      _coordinate: {x: 6, y: 3}
-    - _prefabIndex: 3
-      _coordinate: {x: 6, y: 4}
-    - _prefabIndex: 0
-      _coordinate: {x: 6, y: 5}
-    - _prefabIndex: 0
-      _coordinate: {x: 6, y: 6}
-  _levelName: level_2
-  _starObjectives: 0400000008000000
-  _totalMoves: 0
+    - _coordinate: {x: 0, y: 0}
+      _prefabIndex: 1
+    - _coordinate: {x: 0, y: 1}
+      _prefabIndex: 1
+    - _coordinate: {x: 0, y: 2}
+      _prefabIndex: 1
+    - _coordinate: {x: 0, y: 3}
+      _prefabIndex: 0
+    - _coordinate: {x: 0, y: 4}
+      _prefabIndex: 0
+    - _coordinate: {x: 0, y: 5}
+      _prefabIndex: 0
+    - _coordinate: {x: 0, y: 6}
+      _prefabIndex: 1
+    - _coordinate: {x: 0, y: 7}
+      _prefabIndex: 2
+    - _coordinate: {x: 0, y: 8}
+      _prefabIndex: 1
+    - _coordinate: {x: 1, y: 0}
+      _prefabIndex: 0
+    - _coordinate: {x: 1, y: 1}
+      _prefabIndex: 1
+    - _coordinate: {x: 1, y: 2}
+      _prefabIndex: 0
+    - _coordinate: {x: 1, y: 3}
+      _prefabIndex: 2
+    - _coordinate: {x: 1, y: 4}
+      _prefabIndex: 1
+    - _coordinate: {x: 1, y: 5}
+      _prefabIndex: 1
+    - _coordinate: {x: 1, y: 6}
+      _prefabIndex: 2
+    - _coordinate: {x: 1, y: 7}
+      _prefabIndex: 0
+    - _coordinate: {x: 1, y: 8}
+      _prefabIndex: 1
+    - _coordinate: {x: 2, y: 0}
+      _prefabIndex: 2
+    - _coordinate: {x: 2, y: 1}
+      _prefabIndex: 1
+    - _coordinate: {x: 2, y: 2}
+      _prefabIndex: 0
+    - _coordinate: {x: 2, y: 3}
+      _prefabIndex: 2
+    - _coordinate: {x: 2, y: 4}
+      _prefabIndex: 1
+    - _coordinate: {x: 2, y: 5}
+      _prefabIndex: 0
+    - _coordinate: {x: 2, y: 6}
+      _prefabIndex: 2
+    - _coordinate: {x: 2, y: 7}
+      _prefabIndex: 1
+    - _coordinate: {x: 2, y: 8}
+      _prefabIndex: 0
+    - _coordinate: {x: 3, y: 0}
+      _prefabIndex: 1
+    - _coordinate: {x: 3, y: 1}
+      _prefabIndex: 0
+    - _coordinate: {x: 3, y: 2}
+      _prefabIndex: 2
+    - _coordinate: {x: 3, y: 3}
+      _prefabIndex: 1
+    - _coordinate: {x: 3, y: 4}
+      _prefabIndex: 1
+    - _coordinate: {x: 3, y: 5}
+      _prefabIndex: 2
+    - _coordinate: {x: 3, y: 6}
+      _prefabIndex: 2
+    - _coordinate: {x: 3, y: 7}
+      _prefabIndex: 2
+    - _coordinate: {x: 3, y: 8}
+      _prefabIndex: 0
+    - _coordinate: {x: 4, y: 0}
+      _prefabIndex: 2
+    - _coordinate: {x: 4, y: 1}
+      _prefabIndex: 2
+    - _coordinate: {x: 4, y: 2}
+      _prefabIndex: 0
+    - _coordinate: {x: 4, y: 3}
+      _prefabIndex: 2
+    - _coordinate: {x: 4, y: 4}
+      _prefabIndex: 2
+    - _coordinate: {x: 4, y: 5}
+      _prefabIndex: 2
+    - _coordinate: {x: 4, y: 6}
+      _prefabIndex: 1
+    - _coordinate: {x: 4, y: 7}
+      _prefabIndex: 0
+    - _coordinate: {x: 4, y: 8}
+      _prefabIndex: 1
+    - _coordinate: {x: 5, y: 0}
+      _prefabIndex: 1
+    - _coordinate: {x: 5, y: 1}
+      _prefabIndex: 1
+    - _coordinate: {x: 5, y: 2}
+      _prefabIndex: 2
+    - _coordinate: {x: 5, y: 3}
+      _prefabIndex: 0
+    - _coordinate: {x: 5, y: 4}
+      _prefabIndex: 2
+    - _coordinate: {x: 5, y: 5}
+      _prefabIndex: 0
+    - _coordinate: {x: 5, y: 6}
+      _prefabIndex: 2
+    - _coordinate: {x: 5, y: 7}
+      _prefabIndex: 0
+    - _coordinate: {x: 5, y: 8}
+      _prefabIndex: 0
+    - _coordinate: {x: 6, y: 0}
+      _prefabIndex: 2
+    - _coordinate: {x: 6, y: 1}
+      _prefabIndex: 2
+    - _coordinate: {x: 6, y: 2}
+      _prefabIndex: 1
+    - _coordinate: {x: 6, y: 3}
+      _prefabIndex: 1
+    - _coordinate: {x: 6, y: 4}
+      _prefabIndex: 2
+    - _coordinate: {x: 6, y: 5}
+      _prefabIndex: 0
+    - _coordinate: {x: 6, y: 6}
+      _prefabIndex: 1
+    - _coordinate: {x: 6, y: 7}
+      _prefabIndex: 0
+    - _coordinate: {x: 6, y: 8}
+      _prefabIndex: 0
+    - _coordinate: {x: 7, y: 0}
+      _prefabIndex: 1
+    - _coordinate: {x: 7, y: 1}
+      _prefabIndex: 0
+    - _coordinate: {x: 7, y: 2}
+      _prefabIndex: 1
+    - _coordinate: {x: 7, y: 3}
+      _prefabIndex: 1
+    - _coordinate: {x: 7, y: 4}
+      _prefabIndex: 2
+    - _coordinate: {x: 7, y: 5}
+      _prefabIndex: 0
+    - _coordinate: {x: 7, y: 6}
+      _prefabIndex: 0
+    - _coordinate: {x: 7, y: 7}
+      _prefabIndex: 2
+    - _coordinate: {x: 7, y: 8}
+      _prefabIndex: 0
+    - _coordinate: {x: 8, y: 0}
+      _prefabIndex: 1
+    - _coordinate: {x: 8, y: 1}
+      _prefabIndex: 1
+    - _coordinate: {x: 8, y: 2}
+      _prefabIndex: 2
+    - _coordinate: {x: 8, y: 3}
+      _prefabIndex: 2
+    - _coordinate: {x: 8, y: 4}
+      _prefabIndex: 2
+    - _coordinate: {x: 8, y: 5}
+      _prefabIndex: 2
+    - _coordinate: {x: 8, y: 6}
+      _prefabIndex: 0
+    - _coordinate: {x: 8, y: 7}
+      _prefabIndex: 1
+    - _coordinate: {x: 8, y: 8}
+      _prefabIndex: 0
+  _totalMoves: 25

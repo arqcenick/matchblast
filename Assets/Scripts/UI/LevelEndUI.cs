@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using Game.Behaviours;
+using Game.Events;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Game.UI
@@ -32,6 +34,7 @@ namespace Game.UI
         private void ShowWinGame(int starCount)
         {
             DarkenPanel();
+            UIEvent<ShowPlayerCounters>.Instance.Invoke();
             _winLevelPanel.transform.DOMoveX(0, 1f).OnComplete(() => StartCoroutine(Win(starCount)));
         }
 
