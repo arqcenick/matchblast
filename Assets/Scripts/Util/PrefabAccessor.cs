@@ -55,6 +55,9 @@ namespace Game.Util
         [SerializeField] private List<TileBehaviour> _prefabs;
 
         [SerializeField] private List<Sprite> _tileSprites;
+        
+        [SerializeField] private List<Color> _tileColors;
+
 
         [SerializeField] private BoardSettings _levelTemplate;
 
@@ -68,6 +71,7 @@ namespace Game.Util
         }
 
 
+        public List<Color> Colors => _tileColors;
         public List<TileBehaviour> Prefabs => _prefabs;
         public List<Sprite> PowerUpSprites => _powerUpSprites;
 

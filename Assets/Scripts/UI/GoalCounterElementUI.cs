@@ -15,7 +15,7 @@ namespace Game.UI
 
         public void SetTileColor(TileColor color)
         {
-            _spriteRenderer.sprite = PrefabAccessor.Instance.TileSprites[(int) color];
+            _spriteRenderer.color = PrefabAccessor.Instance.Colors[(int) color];
         }
 
         public void SetTileCount(int count)

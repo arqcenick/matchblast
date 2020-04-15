@@ -65,7 +65,7 @@ namespace Game.Behaviours
             set
             {
                 _colorIndex = value;
-                _spriteRenderer.sprite = PrefabAccessor.Instance.TileSprites[(int) _colorIndex];
+                _spriteRenderer.color = PrefabAccessor.Instance.Colors[(int) _colorIndex];
             }
         }
 
@@ -99,12 +99,12 @@ namespace Game.Behaviours
         private IEnumerator DeathAnimation()
         {
             yield return null;
-            if (Destroyed == DestructionWay.Matched) transform.DOScale(Vector3.one * 0.1f, 0.2f).OnComplete(() => SimpleObjectPool.Destroy(this));
-            else if (Destroyed == DestructionWay.Converted)
-            {
-                transform.localPosition += Vector3.back;
-                transform.DOMove(_convertTarget.transform.position, 0.5f).OnComplete(() => SimpleObjectPool.Destroy(this));
-            }
+            if (Destroyed != DestructionWay.None) transform.DOScale(transform.localScale * 0.1f, 0.2f).OnComplete(() => SimpleObjectPool.Destroy(this));
+            // else if (Destroyed == DestructionWay.Converted)
+            // {
+            //     transform.localPosition += Vector3.back;
+            //     transform.DOMove(_convertTarget.transform.position, 0.5f).OnComplete(() => SimpleObjectPool.Destroy(this));
+            // }
         }
 
 
