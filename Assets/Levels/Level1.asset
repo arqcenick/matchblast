@@ -147,4 +147,4 @@ MonoBehaviour:
       _prefabIndex: 2
     - _coordinate: {x: 7, y: 7}
       _prefabIndex: 2
-  _totalMoves: 30
+  _totalMoves: 20

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Behaviours
@@ -23,11 +24,14 @@ namespace Game.Behaviours
                 case MatchType.TNT:
                     _spriteRenderer.sprite = _explosions[2];
                     break;
-                default:
+                case MatchType.None:
                     _spriteRenderer.sprite = null;
+                    break;
+                default:
                     break;
             }
         }
+        
 
         private void Awake()
         {

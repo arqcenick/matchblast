@@ -16,11 +16,17 @@ namespace Game.Behaviours
             Debug.Log(_board.Tiles);
             RefreshTiles(_board.Tiles);
             _board.onTileCreated += ListenToTileClick;
+            _board.onTileDestroyed += DoNotListenToTileClick;
         }
 
         private void ListenToTileClick(TileBehaviour tile)
         {
             tile.onClick += OnTileClicked;
+        }
+
+        private void DoNotListenToTileClick(TileBehaviour tile)
+        {
+            tile.onClick -= OnTileClicked;
         }
 
         private void RefreshTiles(TileBehaviour[,] tiles)
@@ -32,7 +38,7 @@ namespace Game.Behaviours
 
         private void OnTileClicked(TileBehaviour tile)
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            if (tile.gameObject.activeInHierarchy && !EventSystem.current.IsPointerOverGameObject())
             {
                 if (tile.PowerUp == PowerUpType.None)
                     _board.OnTileMatched(tile);

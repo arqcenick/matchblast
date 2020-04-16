@@ -79,7 +79,7 @@ namespace Game.Behaviours
             }
         }
 
-        public DestructionWay Destroyed { get; private set; }
+        public DestructionWay Destroyed { get; set; }
         
         public PowerUpType PowerUp { get; private set; } = PowerUpType.None;
 
@@ -95,6 +95,7 @@ namespace Game.Behaviours
             Destroyed = DestructionWay.Matched;
             StartCoroutine(DeathAnimation());
         }
+        
 
         private IEnumerator DeathAnimation()
         {
@@ -138,11 +139,14 @@ namespace Game.Behaviours
             _colorIndex = TileColor.None;
             _matchType = MatchType.Empty;
             Destroyed = DestructionWay.None;
-            _spriteRenderer.sprite = PrefabAccessor.Instance.PowerUpSprites[(int) powerUp];
+
+            GetComponentInChildren<PowerUpIndicator>().SetSprite = PrefabAccessor.Instance.PowerUpSprites[(int) powerUp];
+            //_spriteRenderer.sprite = PrefabAccessor.Instance.PowerUpSprites[(int) powerUp];
         }
 
         public void ClearPowerUp()
         {
+            GetComponentInChildren<PowerUpIndicator>().SetSprite = null;
             PowerUp = PowerUpType.None;
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Game.UI
 {
+    
     public class WinLevelUi : MonoBehaviour
     {
         private int _currentStarCount;

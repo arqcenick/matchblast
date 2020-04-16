@@ -14,7 +14,7 @@ namespace Game.Behaviours
         private static IPlayer _player;
 
         private static bool _initialized;
-
+    
         public static void Initialize(IPlayer player)
         {
             _player = player;
@@ -68,7 +68,7 @@ namespace Game.Behaviours
         [SerializeField] private List<BoardSettings> _levels;
 
         private TimeSpan _requiredSpan;
-
+        private bool _starting;
         public int GetHealth()
         {
             return _currentHealth;
@@ -91,20 +91,37 @@ namespace Game.Behaviours
 
         public void StartLevel()
         {
-            UIEvent<WillSceneChangeEvent>.Instance.Invoke();
-            UIEvent<HidePlayerCounters>.Instance.Invoke();
+            if (!_starting)
+            {
+                _starting = true;
+                if(_currentHealth > 0)
+                {
+                    UIEvent<WillSceneChangeEvent>.Instance.Invoke();
+                    UIEvent<HidePlayerCounters>.Instance.Invoke();
+            
+                    transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1); });
+                }
+                else
+                {
+                    Debug.Log("Not enough lives...");
+                }
 
-            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(1); });
+            }
+
         }
 
         public void NextLevel()
         {
+
             StartLevel();
+            
         }
 
         public void RestartLevel()
         {
+
             StartLevel();
+            
         }
 
         public void MainMenu()
@@ -115,6 +132,12 @@ namespace Game.Behaviours
 
         private void Awake()
         {
+            if (FindObjectsOfType<LevelManager>().Length > 1)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             PlayerServices.Initialize(this);
             SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.sceneUnloaded += OnSceneUnloaded;
@@ -134,7 +157,7 @@ namespace Game.Behaviours
             {
                 _currentLevel = 0;
                 _currentStars = 0;
-                _currentHealth = 5;
+                _currentHealth = 1;
 
                 PlayerPrefs.SetInt("Level", _currentLevel);
                 PlayerPrefs.SetInt("Stars", _currentStars);
@@ -170,11 +193,14 @@ namespace Game.Behaviours
             {
                 AddHealth(healthRegen);
                 _lastDate = DateTime.Now;
+                UIEvent<UpdatePlayerCounters>.Instance.Invoke();
+
             }
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            _starting = false;
             Debug.Log(_currentLevel);
             if (scene.buildIndex == 1)
             {
@@ -197,6 +223,11 @@ namespace Game.Behaviours
             }
 
             UIEvent<SceneReadyEvent>.Instance.Invoke();
+
+            if (scene.buildIndex == 0)
+            {
+                UIEvent<ShowPlayerCounters>.Instance.Invoke();
+            }
         }
 
         private void OnSceneUnloaded(Scene scene)
@@ -220,7 +251,7 @@ namespace Game.Behaviours
 
         private void OnPlayerLose()
         {
-            _currentHealth--;
+            _currentHealth = Math.Max(0, _currentHealth - 1);
         }
 
         private void OnApplicationQuit()

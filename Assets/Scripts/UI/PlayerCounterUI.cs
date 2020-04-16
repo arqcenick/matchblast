@@ -21,6 +21,8 @@ namespace Game.UI
             UIEvent<HidePlayerCounters>.Instance.AddListener(Hide);
             UIEvent<ShowPlayerCounters>.Instance.AddListener(Show);
             UIEvent<ShowPlayerCounters>.Instance.AddListener(UpdateCounters);
+            UIEvent<UpdatePlayerCounters>.Instance.AddListener(UpdateCounters);
+
 
         }
 

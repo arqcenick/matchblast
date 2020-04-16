@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DG.Tweening;
 using Game.Behaviours;
 using Game.Events;
@@ -17,6 +18,9 @@ namespace Game.UI
         [SerializeField] private LoseLevelUI _loseLevelPanel;
 
         [SerializeField] private WinLevelUi _winLevelPanel;
+        
+        [SerializeField] private NoLifeUI _noLifePanel;
+
 
         private void Awake()
         {
@@ -29,6 +33,41 @@ namespace Game.UI
         {
             _board.onPlayerWin += ShowWinGame;
             _board.onPlayerLose += ShowLoseGame;
+        }
+
+
+        private bool _timerStarted;
+        private float _timer;
+        private void Update()
+        {
+
+
+            if (_timerStarted)
+            {
+                _timer += Time.deltaTime;
+                if (_timer > 3f)
+                {
+                    _timerStarted = false;
+                    _timer = 0;
+                    LightenPanel(); 
+                    UIEvent<HidePlayerCounters>.Instance.Invoke();
+
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    UIEvent<MainMenuEvent>.Instance.Invoke();
+                    
+                }
+                
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                DarkenPanel();
+                UIEvent<ShowPlayerCounters>.Instance.Invoke();
+                _timerStarted = true;
+            }
         }
 
         private void ShowWinGame(int starCount)
@@ -50,14 +89,27 @@ namespace Game.UI
         private void ShowLoseGame()
         {
             DarkenPanel();
-            _loseLevelPanel.SetHealthVisibilities();
-            _loseLevelPanel.transform.DOMoveX(0, 1f).OnComplete(_loseLevelPanel.LoseHealth);
+            if (PlayerServices.GetPlayerHealth() == 0)
+            {
+                _noLifePanel.transform.DOMoveX(0, 1f);
+            }
+            else
+            {
+                _loseLevelPanel.SetHealthVisibilities();
+                _loseLevelPanel.transform.DOMoveX(0, 1f).OnComplete(_loseLevelPanel.LoseHealth);
+            }
+
         }
 
         private void DarkenPanel()
         {
             _darkeningPanel.enabled = true;
             _darkeningPanel.DOFade(0.65f, 1f);
+        }
+        
+        private void LightenPanel()
+        {
+            _darkeningPanel.DOFade(0, 1f).OnComplete(()=>_darkeningPanel.enabled = false);
         }
     }
 }

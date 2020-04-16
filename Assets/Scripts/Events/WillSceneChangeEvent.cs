@@ -10,6 +10,10 @@ namespace Game.Events
     {
     }
     
+    public class UpdatePlayerCounters : UnityEvent
+    {
+    }
+    
     public class HidePlayerCounters : UnityEvent
     {
     }

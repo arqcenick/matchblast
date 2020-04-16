@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using Game.Behaviours;
 using Game.Data;
 using UnityEngine;
@@ -22,9 +23,15 @@ namespace Game.Util
         {
             if (_objectPool.Count > 0)
             {
+                
                 var newObject = (T) _objectPool.Dequeue();
-                newObject.transform.SetParent(parent);
+                newObject.gameObject.SetActive(true);
+                if (newObject.transform.parent != parent)
+                {
+                    newObject.transform.SetParent(parent);
+                }
                 newObject.transform.SetPositionAndRotation(position, rotation);
+                newObject.transform.localScale = original.transform.localScale;
                 return newObject;
             }
 
@@ -32,10 +39,12 @@ namespace Game.Util
         }
 
         public static void Destroy(MonoBehaviour go)
-        {
+        {                
+            go.transform.DOKill();
             if (_objectPool.Count < MaxPoolSize)
             {
                 go.gameObject.SetActive(false);
+                
                 _objectPool.Enqueue(go);
             }
             else

@@ -66,6 +66,8 @@ namespace Game.Behaviours
             var randomTileIndex = selections[Random.Range(0, selections.Count)];
             tile.ColorIndex = (TileColor) randomTileIndex;
             onTileCreated?.Invoke(tile);
+            tile.Destroyed = DestructionWay.None;
+            Debug.Assert(tile.Destroyed == DestructionWay.None);
             return tile;
         }
 
@@ -137,6 +139,8 @@ namespace Game.Behaviours
                 {
                     destroyedTile.SetConvertedBy(tile);
                 }
+
+                onTileCreated(tile);
             }
             tile.transform.localPosition += Vector3.back * 2;
             if (destroyedTilesCount >= 9)
@@ -159,7 +163,6 @@ namespace Game.Behaviours
         private void Awake()
         {
             _columnUpdateFlags = new bool[_settings.Width];
-
             UIEvent<SceneReadyEvent>.Instance.AddListener(StartLevel);
         }
 
@@ -175,12 +178,15 @@ namespace Game.Behaviours
 
         public void StartLevel()
         {
+            _columnUpdateFlags = new bool[_settings.Width];
+
             CheckMatches();
             _gameObjectives = new Dictionary<TileColor, int>();
             foreach (var kv in _settings.Objectives) _gameObjectives.Add(kv.Key, kv.Value);
 
             _movesLeft = _settings.TotalMoves;
             onLevelStarted(_gameObjectives, _movesLeft);
+            
         }
 
         private void CheckWinLoseCondition()
@@ -248,6 +254,7 @@ namespace Game.Behaviours
                     shouldCheckWinCondition = true;
                     var counter = 0;
                     for (var j = 0; j < _settings.Height; j++)
+                    {
                         if (Tiles[i, j].Destroyed != DestructionWay.None)
                         {
                             counter++;
@@ -263,9 +270,11 @@ namespace Game.Behaviours
                                 GetWorldPosition(i, _settings.Height - 1 + counter);
                             Tiles[i, _settings.Height - 1].SetPosition(GetWorldPosition(i, _settings.Height - 1));
                             Tiles[i, _settings.Height - 1].SetCoordinate(new Vector2Int(i, _settings.Height - 1));
-
                             j--;
                         }
+                        Debug.Log(counter);
+                    }
+    
 
                     _columnUpdateFlags[i] = false;
                     CheckMatches();
@@ -333,6 +342,7 @@ namespace Game.Behaviours
             {
                 var destroyed = DestroyRecursively(tile.Coordinate);
                 CreatePowerUpAtTile(tile, destroyed);
+                SoundManager.Instance.PlayRandomMatchSound();
             }
             else
             {
@@ -347,6 +357,7 @@ namespace Game.Behaviours
         {
             if (tile.PowerUp != PowerUpType.None)
             {
+                SoundManager.Instance.PlayRandomMatchSound();
                 var powerUp = tile.PowerUp;
                 tile.ClearPowerUp();
                 switch (powerUp)
