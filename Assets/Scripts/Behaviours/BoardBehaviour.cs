@@ -143,12 +143,15 @@ namespace Game.Behaviours
                 onTileCreated(tile);
             }
             tile.transform.localPosition += Vector3.back * 2;
-            if (destroyedTilesCount >= 9)
-                tile.SetAsPowerUp(PowerUpType.TNT);
-            else if (destroyedTilesCount >= 7)
-                tile.SetAsPowerUp(PowerUpType.Dynamite);
-            else if (destroyedTilesCount >= 5) tile.SetAsPowerUp(PowerUpType.Bomb);
 
+
+            var powerUp = GetPowerUpDataForCount(destroyedTilesCount);
+            if (powerUp != null)
+            {
+                tile.SetAsPowerUp(powerUp);
+
+            }
+            
 
             
         }
@@ -315,13 +318,20 @@ namespace Game.Behaviours
 
         private MatchType GetMatchTypeForCount(int count)
         {
-            if (count < 5) return MatchType.Empty;
 
-            if (count < 7) return MatchType.Bomb;
+            return GetPowerUpDataForCount(count)?.PowerUpType ?? MatchType.None;
+        }
+        private PowerUpData GetPowerUpDataForCount(int count)
+        {
 
-            if (count < 9) return MatchType.Dynamite;
+            var collection = PrefabAccessor.Instance.PowerUpDatas.Where(x => count - x.MinRequiredMatchToOccur >= 0);
+            if (!collection.Any())
+            {
+                return null;
+            }
 
-            return MatchType.TNT;
+            return collection.OrderBy(x => count - x.MinRequiredMatchToOccur).First();
+
         }
 
         private void CheckMatchesRecursively(List<Vector2Int> matchGroup, TileBehaviour tile)
@@ -355,46 +365,21 @@ namespace Game.Behaviours
 
         public void OnTileActivated(TileBehaviour tile)
         {
-            if (tile.PowerUp != PowerUpType.None)
+            if (tile.PowerUp != null)
             {
                 SoundManager.Instance.PlayRandomMatchSound();
                 var powerUp = tile.PowerUp;
                 tile.ClearPowerUp();
-                switch (powerUp)
+                DestroyTileAt(tile.Coordinate);
+                var neigbours = GetNeighbours(tile.Coordinate, powerUp.ExplosionRadius);
+                foreach (var neigbour in neigbours)
                 {
-                    case PowerUpType.Bomb:
-                        DestroyTileAt(tile.Coordinate);
-                        var neigbours = GetNeighbours(tile.Coordinate);
-                        foreach (var neigbour in neigbours)
-                            if (neigbour.PowerUp == PowerUpType.None)
-                                DestroyTileAt(neigbour.Coordinate);
-                            else
-                                OnTileActivated(neigbour);
-                        break;
-                    case PowerUpType.Dynamite:
-                        DestroyTileAt(tile.Coordinate);
-                        neigbours = GetNeighbours(tile.Coordinate, 2);
-                        foreach (var neigbour in neigbours)
-                            if (neigbour.PowerUp == PowerUpType.None)
-                                DestroyTileAt(neigbour.Coordinate);
-                            else
-                                OnTileActivated(neigbour);
-
-                        break;
-                    case PowerUpType.TNT:
-                        DestroyTileAt(tile.Coordinate);
-                        neigbours = GetNeighbours(tile.Coordinate, 3);
-                        foreach (var neigbour in neigbours)
-                            if (neigbour.PowerUp == PowerUpType.None)
-                                DestroyTileAt(neigbour.Coordinate);
-                            else
-                                OnTileActivated(neigbour);
-                        break;
-                    case PowerUpType.None:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    if (neigbour.PowerUp == null)
+                        DestroyTileAt(neigbour.Coordinate);
+                    else
+                        OnTileActivated(neigbour);
                 }
+
             }
         }
         

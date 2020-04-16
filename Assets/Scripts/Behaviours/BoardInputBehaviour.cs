@@ -40,7 +40,7 @@ namespace Game.Behaviours
         {
             if (tile.gameObject.activeInHierarchy && !EventSystem.current.IsPointerOverGameObject())
             {
-                if (tile.PowerUp == PowerUpType.None)
+                if (tile.PowerUp == null)
                     _board.OnTileMatched(tile);
                 else
                     _board.OnTileActivated(tile);

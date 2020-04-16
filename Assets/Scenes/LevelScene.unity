@@ -477,10 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &27513182
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -576,10 +572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &40657257
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1187,10 +1179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &105869801
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1413,10 +1401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &116546805
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1730,10 +1714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &166902458
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1829,10 +1809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &169653934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1928,10 +1904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &173543021
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2189,10 +2161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &193760012
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2397,10 +2365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &257896198
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2585,10 +2549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &263684369
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2773,10 +2733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &272764847
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2872,10 +2828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &282108403
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3098,10 +3050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &287156976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3692,10 +3640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &359380024
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3791,10 +3735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &373343328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4144,10 +4084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &388974546
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4825,10 +4761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &439755910
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5272,10 +5204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &516343498
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5454,10 +5382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &526054717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5553,10 +5477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &534758160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5642,9 +5562,9 @@ RectTransform:
   m_Father: {fileID: 1531846267}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -334, y: -796}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 138.8, y: 146.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540237822
@@ -5884,10 +5804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &573580700
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5983,10 +5899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &574826672
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6694,10 +6606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &649314144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6793,10 +6701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &659035813
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6892,10 +6796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &661239425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7286,6 +7186,8 @@ GameObject:
   - component: {fileID: 735751669}
   - component: {fileID: 735751668}
   - component: {fileID: 735751670}
+  - component: {fileID: 735751671}
+  - component: {fileID: 735751672}
   m_Layer: 0
   m_Name: PrefabManager
   m_TagString: Untagged
@@ -7325,6 +7227,10 @@ MonoBehaviour:
   - {r: 0.45490196, g: 0.6039216, b: 0.5254902, a: 1}
   - {r: 0.12758097, g: 0.3864929, b: 0.4433962, a: 1}
   _levelTemplate: {fileID: 11400000, guid: 9f342acc79e86764d88016c79bb64fb1, type: 2}
+  _powerUpDatas:
+  - {fileID: 11400000, guid: 9d624dc9ff23f6c4f88fb7b909d83b70, type: 2}
+  - {fileID: 11400000, guid: fc86f45091e35c647a1231a2a882a733, type: 2}
+  - {fileID: 11400000, guid: a67b91be50d85ac4797a1d747bbc871b, type: 2}
 --- !u!4 &735751669
 Transform:
   m_ObjectHideFlags: 0
@@ -7333,7 +7239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735751667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75575036, y: 1.5152957, z: -2.3855274}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7351,6 +7257,122 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc9e6817917426b9f3d00ae8702673a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &735751671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735751667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2437b9ee72869c54fa94253dbe7c7794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 735751672}
+  _matchTileSounds:
+  - {fileID: 8300000, guid: 908375fdbf40b104092b5fe0aebce0b6, type: 3}
+  - {fileID: 8300000, guid: 912fa712f4c4c5b4081352b274d10ad0, type: 3}
+  - {fileID: 8300000, guid: 092a2d54966739f46a8e77bba68e8209, type: 3}
+  - {fileID: 8300000, guid: ab11c4cd55d984f4ab3ef8ef539fd9bc, type: 3}
+  - {fileID: 8300000, guid: 7af828ae192e4884fabcd3ba37e3d124, type: 3}
+  _matchFailSounds: []
+--- !u!82 &735751672
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735751667}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1.5
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &742000327
 GameObject:
   m_ObjectHideFlags: 0
@@ -7582,10 +7604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &751315535
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7681,10 +7699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &765306203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7780,10 +7794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &770168236
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7998,9 +8008,9 @@ RectTransform:
   m_Father: {fileID: 1531846267}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 637}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -130}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778561200
@@ -8162,10 +8172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &780205679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8550,10 +8556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &801442963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8813,10 +8815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &867497619
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8947,10 +8945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &874975445
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10256,10 +10250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &975199228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10390,10 +10380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1002207750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10743,10 +10729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1019100513
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10842,10 +10824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1038164946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11409,10 +11387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1180362118
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11508,10 +11482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1202037924
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11642,10 +11612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1213276461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11893,10 +11859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1223956330
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12271,10 +12233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1262378838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12746,10 +12704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1286381589
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13079,10 +13033,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1317037990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13811,10 +13761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1399018280
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13910,10 +13856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1401916128
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15045,10 +14987,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1523171304
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15144,10 +15082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1530332162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15548,10 +15482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1560958804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15901,10 +15831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1615161751
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16282,10 +16208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1635495212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16635,10 +16557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1643879340
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16931,10 +16849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1679614804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17488,10 +17402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1709405562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18004,10 +17914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1752350641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18230,10 +18136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1771461378
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18875,8 +18777,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.UI.LoseLevelUI, Assembly-CSharp
+      - m_Target: {fileID: 265411786}
+        m_TargetAssemblyTypeName: Game.UI.NoLifeUI, Assembly-CSharp
         m_MethodName: OnMainMenu
         m_Mode: 1
         m_Arguments:
@@ -19263,10 +19165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1862729559
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19489,10 +19387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1898341294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19588,10 +19482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1913096074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19986,10 +19876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &1980267424
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20364,10 +20250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &2020019670
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20498,10 +20380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &2066151158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20749,10 +20627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &2097404262
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20848,10 +20722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &2101606543
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21164,10 +21034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0d5a37463783c4b9817674fa46af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosions:
-  - {fileID: 21300000, guid: 44508461e135c3f45aa047f7b10737f3, type: 3}
-  - {fileID: 21300000, guid: 857c5dd7665655743befa55036517289, type: 3}
-  - {fileID: 21300000, guid: 443ba739279ee704bbc1d4808181512f, type: 3}
 --- !u!212 &2135878370
 SpriteRenderer:
   m_ObjectHideFlags: 0

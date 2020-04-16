@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using Game.Data;
 using Game.Util;
 using UnityEngine;
 
@@ -33,14 +34,7 @@ namespace Game.Behaviours
         Matched,
         Converted,
     }
-
-    public enum PowerUpType
-    {
-        Bomb,
-        Dynamite,
-        TNT,
-        None
-    }
+    
 
     [RequireComponent(typeof(ExplosionIndicatorBehaviour))]
     [RequireComponent(typeof(SpriteRenderer))]
@@ -80,8 +74,8 @@ namespace Game.Behaviours
         }
 
         public DestructionWay Destroyed { get; set; }
-        
-        public PowerUpType PowerUp { get; private set; } = PowerUpType.None;
+
+        public PowerUpData PowerUp { get; private set; } = null;
 
         public Vector2Int Coordinate { get; private set; }
 
@@ -133,21 +127,21 @@ namespace Game.Behaviours
             _convertTarget = tile;
             Destroyed = DestructionWay.Converted;
         }
-        public void SetAsPowerUp(PowerUpType powerUp)
+        public void SetAsPowerUp(PowerUpData powerUp)
         {
             PowerUp = powerUp;
             _colorIndex = TileColor.None;
             _matchType = MatchType.Empty;
             Destroyed = DestructionWay.None;
 
-            GetComponentInChildren<PowerUpIndicator>().SetSprite = PrefabAccessor.Instance.PowerUpSprites[(int) powerUp];
+            GetComponentInChildren<PowerUpIndicator>().SetSprite = powerUp.PowerUpIcon;
             //_spriteRenderer.sprite = PrefabAccessor.Instance.PowerUpSprites[(int) powerUp];
         }
 
         public void ClearPowerUp()
         {
             GetComponentInChildren<PowerUpIndicator>().SetSprite = null;
-            PowerUp = PowerUpType.None;
+            PowerUp = null;
         }
     }
 }

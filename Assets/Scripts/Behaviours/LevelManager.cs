@@ -157,7 +157,7 @@ namespace Game.Behaviours
             {
                 _currentLevel = 0;
                 _currentStars = 0;
-                _currentHealth = 1;
+                _currentHealth = 2;
 
                 PlayerPrefs.SetInt("Level", _currentLevel);
                 PlayerPrefs.SetInt("Stars", _currentStars);

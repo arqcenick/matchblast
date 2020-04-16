@@ -67,8 +67,10 @@ namespace Game.Util
         
         [SerializeField] private List<Color> _tileColors;
 
-
         [SerializeField] private BoardSettings _levelTemplate;
+
+        [SerializeField] private List<PowerUpData> _powerUpDatas;
+
 
         public static PrefabAccessor Instance
         {
@@ -83,6 +85,7 @@ namespace Game.Util
         public List<Color> Colors => _tileColors;
         public List<TileBehaviour> Prefabs => _prefabs;
         public List<Sprite> PowerUpSprites => _powerUpSprites;
+        public List<PowerUpData> PowerUpDatas => _powerUpDatas;
 
         public List<Sprite> TileSprites => _tileSprites;
         public BoardSettings LevelTemplate { get => _levelTemplate; }

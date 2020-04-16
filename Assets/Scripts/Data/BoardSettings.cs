@@ -9,7 +9,7 @@ using Random = System.Random;
 
 namespace Game.Data
 {
-    [CreateAssetMenu(fileName = "LevelData", menuName = "LevelData", order = 1)]
+    [CreateAssetMenu(fileName = "LevelData", menuName = "GameData/LevelData", order = 0)]
     public class BoardSettings : ScriptableObject
     {
         private BoardSettingsData _data;
