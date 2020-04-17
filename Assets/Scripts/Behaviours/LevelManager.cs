@@ -9,51 +9,6 @@ using UnityEngine.SceneManagement;
 
 namespace Game.Behaviours
 {
-    public static class PlayerServices
-    {
-        private static IPlayer _player;
-
-        private static bool _initialized;
-    
-        public static void Initialize(IPlayer player)
-        {
-            _player = player;
-            _initialized = true;
-        }
-
-        public static int GetPlayerHealth()
-        {
-            Debug.Assert(_initialized);
-            return _player.GetHealth();
-        }
-
-        public static void SetPlayerHealth(int health)
-        {
-            Debug.Assert(_initialized);
-            _player.SetHealth(health);
-        }
-
-        public static int GetPlayerStars()
-        {
-            Debug.Assert(_initialized);
-            return _player.GetStars();
-        }
-
-        public static int GetCurrentLevel()
-        {
-            return _player.GetCurrentLevel();
-        }
-    }
-
-    public interface IPlayer
-    {
-        int GetHealth();
-
-        void SetHealth(int health);
-        int GetStars();
-        int GetCurrentLevel();
-    }
-
     public class LevelManager : MonoBehaviour, IPlayer
     {
         private DateTime _currentDate;
@@ -167,7 +122,7 @@ namespace Game.Behaviours
             {
                 _currentLevel = 0;
                 _currentStars = 0;
-                _currentHealth = 0;
+                _currentHealth = 5;
 
                 PlayerPrefs.SetInt("Level", _currentLevel);
                 PlayerPrefs.SetInt("Stars", _currentStars);
@@ -205,6 +160,11 @@ namespace Game.Behaviours
                 _lastDate = DateTime.Now;
                 UIEvent<UpdatePlayerCounters>.Instance.Invoke();
 
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                //TODO: Make application ask for confirmation.
+                Application.Quit();
             }
         }
 
