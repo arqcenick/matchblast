@@ -93,9 +93,9 @@ namespace Game.Behaviours
         {
             if (!_starting)
             {
-                _starting = true;
                 if(_currentHealth > 0)
                 {
+                    _starting = true;
                     UIEvent<WillSceneChangeEvent>.Instance.Invoke();
                     UIEvent<HidePlayerCounters>.Instance.Invoke();
             
@@ -103,7 +103,7 @@ namespace Game.Behaviours
                 }
                 else
                 {
-                    Debug.Log("Not enough lives...");
+                    UIEvent<OutOfLivesEvent>.Instance.Invoke();
                 }
 
             }
@@ -126,8 +126,18 @@ namespace Game.Behaviours
 
         public void MainMenu()
         {
-            UIEvent<WillSceneChangeEvent>.Instance.Invoke();
-            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(0); });
+
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                UIEvent<HideOutOfLivesEvent>.Instance.Invoke();
+            }
+            else
+            {
+                UIEvent<WillSceneChangeEvent>.Instance.Invoke();
+                transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(0); });
+            }
+            
+
         }
 
         private void Awake()
@@ -157,7 +167,7 @@ namespace Game.Behaviours
             {
                 _currentLevel = 0;
                 _currentStars = 0;
-                _currentHealth = 2;
+                _currentHealth = 0;
 
                 PlayerPrefs.SetInt("Level", _currentLevel);
                 PlayerPrefs.SetInt("Stars", _currentStars);

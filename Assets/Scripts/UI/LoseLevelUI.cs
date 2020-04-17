@@ -34,6 +34,7 @@ namespace Game.UI
 
         public void LoseHealth()
         {
+            SetHealthVisibilities();
             Debug.Log(PlayerServices.GetPlayerHealth());
             var currentHeart = _hearts[PlayerServices.GetPlayerHealth()];
 

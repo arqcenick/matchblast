@@ -13,6 +13,14 @@ namespace Game.Events
     public class NextLevelEvent : UnityEvent
     {
     }
+    
+    public class OutOfLivesEvent : UnityEvent
+    {
+    }
+    
+    public class HideOutOfLivesEvent : UnityEvent
+    {
+    }
 
     public class UIEvent<T> where T : UnityEvent, new()
     {

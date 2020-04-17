@@ -261,6 +261,7 @@ namespace Game.Behaviours
                         if (Tiles[i, j].Destroyed != DestructionWay.None)
                         {
                             counter++;
+                            //Swap all tiles above the destroyed tile with the tile below it to simulate falling down
                             for (var k = j; k < _settings.Height - 1; k++)
                             {
                                 Tiles[i, k] = Tiles[i, k + 1];
@@ -273,25 +274,20 @@ namespace Game.Behaviours
                                 GetWorldPosition(i, _settings.Height - 1 + counter);
                             Tiles[i, _settings.Height - 1].SetPosition(GetWorldPosition(i, _settings.Height - 1));
                             Tiles[i, _settings.Height - 1].SetCoordinate(new Vector2Int(i, _settings.Height - 1));
+                            
+                            //Decrement the row indexer to account for the destroyed tile.
                             j--;
                         }
                         Debug.Log(counter);
                     }
-    
 
                     _columnUpdateFlags[i] = false;
                     CheckMatches();
                 }
 
             if (shouldCheckWinCondition) CheckWinLoseCondition();
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                Reshuffle();
-            }
-#endif
 
-           }
+        }
 
         private void CheckMatches()
         {
@@ -313,7 +309,6 @@ namespace Game.Behaviours
             {
                 Reshuffle();
             }
-            
         }
 
         private MatchType GetMatchTypeForCount(int count)
@@ -356,9 +351,6 @@ namespace Game.Behaviours
             }
             else
             {
-                // Sequence shakeSequence = DOTween.Sequence();
-                // shakeSequence.Append(transform.DORotate(Vector3.forward * 30, 0.5f)).Append(transform.DORotate(Vector3.forward * -15, 0.5f));
-                
                 tile.transform.DOPunchRotation(Vector3.forward * 10f, 0.6f, 5).OnComplete(() => tile.transform.DORotateQuaternion(Quaternion.identity, 0.1f));
             }
         }

@@ -103,6 +103,7 @@ namespace Game.UI
 
         private void DarkenPanel()
         {
+            
             _darkeningPanel.enabled = true;
             _darkeningPanel.DOFade(0.65f, 1f);
         }
