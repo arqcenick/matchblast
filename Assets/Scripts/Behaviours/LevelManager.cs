@@ -89,10 +89,16 @@ namespace Game.Behaviours
             else
             {
                 UIEvent<WillSceneChangeEvent>.Instance.Invoke();
-                transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(0); });
+                LoadMainMenu();
             }
             
 
+        }
+
+        public void LoadMainMenu()
+        {
+            UIEvent<WillSceneChangeEvent>.Instance.Invoke();
+            transform.DOMove(transform.position, 0.5f).OnComplete(() => { SceneManager.LoadScene(0); });
         }
 
         private void Awake()

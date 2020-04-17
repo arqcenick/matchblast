@@ -35,6 +35,8 @@ namespace Game.Behaviours
 
             int y1 = Mathf.FloorToInt(80 * Screen.height / nativeSize.y);;
             int y2 = Mathf.FloorToInt(100 * Screen.height / nativeSize.y);;
+            int y3 = Mathf.FloorToInt(120 * Screen.height / nativeSize.y);;
+
 
             int w1 =  Mathf.FloorToInt(50 * Screen.width / nativeSize.x);;
             int w2 =  Mathf.FloorToInt(200 * Screen.width / nativeSize.x);;
@@ -56,6 +58,8 @@ namespace Game.Behaviours
                                 "_currentLevel", BindingFlags.Instance | BindingFlags.NonPublic);
                             FieldInfo healthField = lm.GetType().GetField(
                                 "_currentHealth", BindingFlags.Instance | BindingFlags.NonPublic);
+                            FieldInfo starField = lm.GetType().GetField(
+                                "_currentStars", BindingFlags.Instance | BindingFlags.NonPublic);
                             if(GUI.Button(new Rect(x1, y1, w1, h1), "Level+", buttonStyle))
                             {
                                 int value =Mathf.Min((int) (levelField.GetValue(lm)) + 1, 4);
@@ -76,6 +80,17 @@ namespace Game.Behaviours
                                 int value =Mathf.Max((int) (healthField.GetValue(lm)) - 1, 0);
                                 healthField.SetValue(lm, value);
                             }
+                            if(GUI.Button(new Rect(x1, y3, 2.2f*w1 , h1), "Clear PlayerPrefs", buttonStyle))
+                            {
+                                PlayerPrefs.SetInt("init", 0);
+                                healthField.SetValue(lm, 5);
+                                levelField.SetValue(lm, 0);
+                                starField.SetValue(lm, 0);
+                                lm.LoadMainMenu();
+                                
+                            }
+                            
+                            
                             
                             GUI.Label(new Rect(x3, y1, w2, h1), "CurrentLevel: " + levelField.GetValue(lm).ToString(), labelStyle);
                             GUI.Label(new Rect(x3, y2, w2, h1), "CurrentHealth : " + healthField.GetValue(lm).ToString(), labelStyle);

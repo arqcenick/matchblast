@@ -181,4 +181,4 @@ MonoBehaviour:
       _prefabIndex: 1
     - _coordinate: {x: 8, y: 8}
       _prefabIndex: 0
-  _totalMoves: 25
+  _totalMoves: 15
