@@ -167,7 +167,7 @@ namespace Game.Behaviours
                 UIEvent<UpdatePlayerCounters>.Instance.Invoke();
 
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex == 0)
             {
                 //TODO: Make application ask for confirmation.
                 Application.Quit();
